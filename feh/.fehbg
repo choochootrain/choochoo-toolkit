@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill `ls -ltr ~/.config/wallpapers/* | shuf -n 1 | tr -s ' ' | cut -d ' ' -f 9`
