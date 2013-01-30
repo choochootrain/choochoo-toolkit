@@ -1,0 +1,20 @@
+[color]
+	ui = auto
+[user]
+	name = Hurshal Patel
+	email = hpatel516@gmail.com
+[credential]
+	helper = cache --timeout=3600
+[branch]
+	autosetuprebase = always
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	d = difftool
+[push]
+	default = simple
+[core]
+	excludesfile = /home/hp/.gitignore_global
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
