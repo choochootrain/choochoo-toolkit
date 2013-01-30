@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Make sure this is before the 'exec' command or it won't be executed.
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
+# Turn caps into escape
+xmodmap -e 'clear Lock'
+xmodmap -e 'keycode 0x42 = Escape'
+xmodmap -e 'keycode 9 = Delete'
+
+#set cursor
+xsetroot -cursor_name left_ptr
+#set xresources
+xrdb -merge ~/.Xresources
+
+#set wallpaper
+sh ~/.fehbg
+
+#bind keys
+#xbindkeys
+
+#run notification daemon
+twmnd &
+#hide the mouse
+unclutter -idle 3 -noevents -jitter 10 &
+
+#start xmonad
+#exec xmonad
+#exec dwm
+exec spectrwm
