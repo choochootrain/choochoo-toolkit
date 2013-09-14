@@ -18,14 +18,12 @@ xrdb -merge ~/.Xresources
 sh ~/.fehbg
 
 #bind keys
-#xbindkeys
+xbindkeys
 
-#run notification daemon
-twmnd &
 #hide the mouse
 unclutter -idle 3 -noevents -jitter 10 &
 
 #start xmonad
 #exec xmonad
-#exec dwm
 exec spectrwm
+#exec icewm
