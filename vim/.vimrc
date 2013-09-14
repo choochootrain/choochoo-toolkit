@@ -25,6 +25,23 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 nnoremap <leader>w <C-w>v<C-w>l
 
+" more natural split opening
+set splitbelow
+set splitright
+
+""Max out the height of the current split
+"ctrl + w _
+""Max out the width of the current split
+"ctrl + w |
+""Normalize all split sizes, which is very handy when resizing terminal
+"ctrl + w =
+""Swap top/bottom or left/right split
+"Ctrl+W R
+""Break out current window into a new tabview
+"Ctrl+W T
+""Close every window in the current tabview but the current one
+"Ctrl+W o
+
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
@@ -36,12 +53,14 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 noremap <leader>i :set list! <CR>
 noremap <leader>q :q
+noremap <leader>in gg=G''
+noremap <leader>c :w !xsel -i -b<CR>
 
 nnoremap / /\v
 vnoremap / /\v
 
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 " Line numbers
 function! NumberToggle()
@@ -71,7 +90,6 @@ set backspace=indent,eol,start
 set wildmenu
 set mouse=a
 
-set ignorecase
 set smartcase
 set incsearch
 set hlsearch
@@ -80,7 +98,7 @@ set title
 
 set foldenable
 set foldcolumn=2
-set foldmethod=marker
+set foldmethod=syntax
 set foldlevelstart=99
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
@@ -172,7 +190,7 @@ let NERDTreeMouseMode=2
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-             \ '\.o$', '\.so$', '\.egg$', '^\.git$' ]
+      \ '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 " Open if no files specified
 autocmd vimenter * if !argc() | NERDTree | endif
 
@@ -185,3 +203,24 @@ noremap <leader>t :TagbarToggle<CR>
 let Tlist_Exit_OnlyWindow=1         " quit when TagList is the last open window
 let Tlist_GainFocus_On_ToggleOpen=1 " put focus on the TagList window when it opens
 " }}}
+
+
+" Gitgutter settings {{{
+let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 1
+highlight clear SignColumn
+noremap <leader>gg :GitGutterToggle<CR>
+" }}}
+
+" Gundo settings {{{
+noremap <leader>u :GundoToggle<CR>
+let g:gundo_preview_bottom = 1
+" }}}
+
+" Arduino settings
+autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+
+" Project specific settings
+if filereadable(".vim.custom")
+  so .vim.custom
+endif
