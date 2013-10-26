@@ -267,3 +267,5 @@ alias gpl='git pull'
 alias gplom='gpl origin master'
 
 alias gl='git lg'
+
+[[ -f ~/.zaliases ]] && . ~/.zaliases
