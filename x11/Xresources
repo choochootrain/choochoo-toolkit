@@ -108,7 +108,7 @@ dzen2.background: black
 *color15:               S_base3
 
 
-! Molokai
+!! Molokai
 ! *xterm*background: #101010
 ! *xterm*foreground: #d0d0d0
 ! *xterm*cursorColor: #d0d0d0

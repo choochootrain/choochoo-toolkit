@@ -23,7 +23,5 @@ xbindkeys
 #hide the mouse
 unclutter -idle 3 -noevents -jitter 10 &
 
-#start xmonad
-#exec xmonad
+#start wm
 exec spectrwm
-#exec icewm
