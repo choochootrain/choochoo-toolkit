@@ -13,7 +13,7 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /home/hp/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [diff]
 	tool = vimdiff
 [difftool]
