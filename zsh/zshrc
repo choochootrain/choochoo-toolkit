@@ -82,7 +82,7 @@ function precmd()
     #export PROMPT="$PROMPT$"
 }
 
-eval `dircolors ~/.dir_colors`
+eval `dircolors ~/.dir_colors` > /dev/null
 export TERM=xterm-256color
 
 RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
@@ -107,11 +107,6 @@ alias man='LC_ALL=C LANG=C man'
 alias f=finger
 alias ll='ls -al'
 alias ls='ls --color=auto '
-alias offlineimap-tty='offlineimap -u TTY.TTYUI'
-alias hnb-partecs='hnb $HOME/partecs/partecs-hnb.xml'
-alias rest2html-css='rst2html --embed-stylesheet --stylesheet-path=/usr/share/python-docutils/s5_html/themes/default/print.css'
-
-# alias	=clear
 
 #chpwd() {
 #     [[ -t 1 ]] || return
@@ -234,7 +229,6 @@ export GEM_HOME=~/.gem/ruby/2.0.0
 export PYTHONSTARTUP=~/.pyrc
 export NODE_PATH=/bin:/usr/lib/node_modules
 
-alias ischool="ssh choochootrain@ischool.berkeley.edu"
 alias pacman="pacmatic"
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -256,11 +250,7 @@ export PERL_MM_OPT="INSTALL_BASE=/home/hp/perl5";
 export PERL5LIB="/home/hp/perl5/lib/perl5:$PERL5LIB";
 export PATH="/home/hp/perl5/bin:$PATH";
 
-# work aliases
-alias pftp='ssh root@198.199.98.157'
-alias 164='inst cs164-dl'
-alias 150='inst cs150-at c125m-19.eecs'
-
+#git aliases
 alias gs='git status'
 
 alias gd='git diff'
