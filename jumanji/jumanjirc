@@ -3,7 +3,7 @@ set homepage http://duckduckgo.com
 searchengine ggl http://www.google.com/search?q=%s
 searchengine wiki http://en.wikipedia.org/w/index.php?search=%s
 
-set download-dir ~/downloads
+set download-dir ~/dl
 set download-command "wget --load-cookies ~/.config/jumanji/cookies '%s' -O '%s'"
 
 set font monospace normal 9
