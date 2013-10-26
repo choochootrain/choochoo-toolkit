@@ -61,7 +61,7 @@ EDITOR='vim'
 # shows the current git branch in the prompt
 function precmd()
 {
-    # Adjust this to your current preferred prompt
+    # Adjust this to your current preferred prompt 
     PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
     local _git _branch
 
@@ -222,9 +222,58 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-export PATH=~/bin:/usr/local/heroku/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:~/.cabal/bin:$PATH
+export PATH=~/bin:/usr/local/heroku/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:~/.cabal/bin:~/node_modules/.bin:$PATH
 alias vi="vim"
 alias xclip="xclip -sel c"
 alias adb="env -u LD_PRELOAD adb"
 [[ -s "/home/hp/.scripts/mvn" ]] && source "/home/hp/.scripts/mvn"
-[ -n "$XTERM_VERSION" ] && transset-df -a 0.9 >/dev/null
+#[ -n "$XTERM_VERSION" ] && transset-df -a 0.9 >/dev/null
+#
+
+export GEM_HOME=~/.gem/ruby/2.0.0
+export PYTHONSTARTUP=~/.pyrc
+export NODE_PATH=/bin:/usr/lib/node_modules
+
+alias ischool="ssh choochootrain@ischool.berkeley.edu"
+alias pacman="pacmatic"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+alias cdg="cd `findup .git`; cd .."
+alias gitc="git log | grep Author | sed 's/Author: //' | sort -r | uniq -c | sort -k +1n"
+alias dmesg="dmesg -deH"
+
+# pro cd function
+pd() {
+  local projDir=$(pro search $1)
+  cd ${projDir}
+}
+
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/hp/perl5";
+export PERL_MB_OPT="--install_base /home/hp/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/hp/perl5";
+export PERL5LIB="/home/hp/perl5/lib/perl5:$PERL5LIB";
+export PATH="/home/hp/perl5/bin:$PATH";
+
+# work aliases
+alias pftp='ssh root@198.199.98.157'
+alias 164='inst cs164-dl'
+alias 150='inst cs150-at c125m-19.eecs'
+
+alias gs='git status'
+
+alias gd='git diff'
+alias gdc='gd --cached'
+
+alias ga='git add'
+alias gr='git rm'
+alias gc='git commit'
+
+alias gps='git push'
+alias gpuom='gps origin master'
+
+alias gpl='git pull'
+alias gplom='gpl origin master'
+
+alias gl='git lg'
