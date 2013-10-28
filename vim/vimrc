@@ -1,8 +1,9 @@
 set modelines=0
 set colorcolumn=85
 au FocusLost * :wa
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+"nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "autocmd BufWritePre * :%s/\s\+$//e
+nnoremap <leader>w :w!<CR>
 
 " powerline
 set laststatus=2
@@ -49,8 +50,10 @@ filetype plugin indent on
 syntax on
 
 let mapleader=","
+let g:mapleader = ","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
 noremap <leader>i :set list! <CR>
 noremap <leader>q :q
 noremap <leader>in gg=G''
@@ -74,7 +77,7 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <leader>nu :call NumberToggle()<cr>
+nnoremap <leader>nu :call NumberToggle()<CR>
 set relativenumber
 au FocusLost * :set number
 au FocusGained * :set relativenumber
@@ -92,12 +95,20 @@ set softtabstop=2
 set backspace=indent,eol,start
 set wildmenu
 set mouse=a
-
+set nolazyredraw "Don't redraw while executing macros
+set noerrorbells
+set novisualbell
+set so=5
 set smartcase
 set incsearch
 set hlsearch
 set autoread
 set title
+set hid "Change buffer - without saving
+
+" search in normal
+map <space> /
+map <c-space> ?
 
 set foldenable
 set foldcolumn=2
@@ -123,7 +134,7 @@ set foldtext=MyFoldText()
 
 nnoremap <leader>z za
 
-nnoremap <leader>f :call FoldColumnToggle()<cr>
+nnoremap <leader>f :call FoldColumnToggle()<CR>
 let g:last_fold_column_width = 4
 
 " {{{
