@@ -284,4 +284,6 @@ alias gplom='gpl origin master'
 
 alias gl='git lg'
 
+alias psgrep='ps aux | grep'
+
 [[ -f ~/.zaliases ]] && source ~/.zaliases
