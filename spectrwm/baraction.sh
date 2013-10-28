@@ -100,6 +100,8 @@ FONT='-*-terminus-*-r-normal-*-*-100-*-*-*-*-iso8859-*'
 ICONS='/home/hp/.config/dzen2'
 HEIGHT='16'
 
+killall dzen2
+
 echo -e " $(icon arch) $(color $GY)arch$(color $FG)linux" | dzen2 -p -e - -h $HEIGHT -w '100' -ta l -fg $FG -bg $BG -fn $FONT &
 
 ##loops forever outputting a line every SLEEP_SEC secs
