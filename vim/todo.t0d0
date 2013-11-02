@@ -1,0 +1,20 @@
+[X] supertab
+[X] powerline
+[.] airline?
+[ ]     patched font
+[X] code folding
+[X] ctrlp
+[X] eclim
+[X] nerdcommenter
+[.] nerdtree
+[X] syntastic
+[X] tagbar
+[X]   ctags installed
+[X] supertab
+[ ] vundle
+[X] caps lock to esc
+[ ] sparkup
+[ ] signature
+[ ] gundo
+[ ] dwm.vim
+[ ] securemodelines

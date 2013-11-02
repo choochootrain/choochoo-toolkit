@@ -32,12 +32,6 @@ autocmd FocusLost * :wa
 " faster save
 nnoremap <leader>w :w!<CR>
 
-" show status line
-set laststatus=2
-
-" modern encoding default
-set encoding=utf-8
-
 " easy window navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -60,15 +54,6 @@ set splitright
 "Ctrl+W T
 " close every window in the current tabview but the current one
 "Ctrl+W o
-
-" load plugins
-call pathogen#infect()
-
-" load documentation for plugins
-call pathogen#helptags()
-
-" file specific settings
-filetype plugin indent on
 
 " syntax highlighting is kinda useful
 syntax on
@@ -102,23 +87,6 @@ vnoremap / /\v
 " scroll faster
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
-
-" toggle relative/absolute line numbers
-" TODO this doesn't work
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-l> :call NumberToggle()<CR>
-
-set relativenumber
-autocmd FocusLost   * :set number
-autocmd FocusGained * :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 
 " continue indentation onto next line
 set autoindent
@@ -240,19 +208,19 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " jump to next conflict marker
 nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 
-" use solarized colorscheme
-colorscheme solarized
-
-" use dark palette
-set background=dark
-
-" map F5 to toggle palette
-call togglebg#map("<F5>")
-
 " characters treated as whitespace
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
 highlight SpecialKey ctermfg=6
 highlight NonText ctermfg=6
+
+" syntax highlighting for arudino files
+autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+
+" syntax highlighting for todo files
+autocmd BufNewFile,BufReadPost *.t0d0,TODO set filetype=vimt0d0
+
+" file specific settings
+filetype plugin indent on
 
 " load project specific files
 if filereadable(".vim.custom")
@@ -262,55 +230,79 @@ endif
 
 "##############################################################################
 "#
-"#    Taglist settings
+"#    vundle/plugin config
 "#
 "##############################################################################
+" add vundle to runtime path
+set runtimepath+=~/.vim/bundle/vundle/
+" setup vundle
+call vundle#rc()
+" let vundle manage vundle
+Bundle 'gmarik/vundle'
 
-" open/close tagbar
+"##############################################################################
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 0
+set ttimeoutlen=50
+let g:airline_theme='powerlineish'
+" show status line
+"set laststatus=2 "TODO patch font
+" modern encoding default
+set encoding=utf-8
+
+
+"##############################################################################
+Bundle 'altercation/vim-colors-solarized'
+"##############################################################################
+colorscheme solarized
+" use dark palette
+set background=dark
+" map F5 to toggle palette
+call togglebg#map("<F5>")
+
+"##############################################################################
+Bundle 'majutsushi/tagbar'
 noremap <leader>t :TagbarToggle<CR>
-
 " quit when taglist is the last open window
 let Tlist_Exit_OnlyWindow=1
-
 " put focus on the taglist window when it opens
 let Tlist_GainFocus_On_ToggleOpen=1
 
-
 "##############################################################################
-"#
-"#    Gitgutter settings
-"#
-"##############################################################################
-
-" open/close gitgutter
+Bundle 'airblade/vim-gitgutter'
 noremap <leader>gg :GitGutterToggle<CR>
-
 " off by default
 let g:gitgutter_enabled = 0
-
 let g:gitgutter_highlight_lines = 1
-
 " consistent coloring with line number column
 highlight clear SignColumn
 
-
 "##############################################################################
-"#
-"#    Gitgutter settings
-"#
-"##############################################################################
-
-" open/close gundo
+"TODO use vim with Python 2.4+ support
+Bundle 'sjl/gundo.vim'
 noremap <leader>u :GundoToggle<CR>
 " show gundo at bottom
 let g:gundo_preview_bottom = 1
 
-
 "##############################################################################
-"#
-"#    Gitgutter settings
-"#
+Bundle 'kien/ctrlp.vim'
 "##############################################################################
-
-" syntax hightlighting for arudino files
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+Bundle 'metalelf0/vimt0d0'
+"##############################################################################
+Bundle 'scrooloose/nerdcommenter'
+"##############################################################################
+Bundle 'flazz/vim-colorschemes'
+"##############################################################################
+Bundle 'ervandew/supertab'
+"##############################################################################
+Bundle 'scrooloose/syntastic'
+"##############################################################################
+Bundle 'Lokaltog/vim-easymotion'
+"##############################################################################
+Bundle 'tpope/vim-fugitive'
+"##############################################################################
+Bundle 'tpope/vim-markdown'
+"##############################################################################
+Bundle 'tsaleh/vim-matchit'
+"##############################################################################
+Bundle 'justinmk/vim-syntax-extra'
