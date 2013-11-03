@@ -4,6 +4,9 @@
 "#
 "##############################################################################
 
+" show line numbers
+set number
+
 " use the damn hjkl keys
 noremap <up> <nop>
 noremap <down> <nop>
@@ -240,13 +243,23 @@ call vundle#rc()
 " let vundle manage vundle
 Bundle 'gmarik/vundle'
 
+
+""##############################################################################
+"Bundle 'majutsushi/tagbar'
+"noremap <leader>t :TagbarToggle<CR>
+"" quit when taglist is the last open window
+"let Tlist_Exit_OnlyWindow=1
+"" put focus on the taglist window when it opens
+"let Tlist_GainFocus_On_ToggleOpen=1
+
+
 "##############################################################################
 Bundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 set ttimeoutlen=50
 let g:airline_theme='powerlineish'
 " show status line
-"set laststatus=2 "TODO fix this
+set laststatus=2 "TODO fix this
 " modern encoding default
 set encoding=utf-8
 
@@ -260,13 +273,6 @@ set background=dark
 " map F5 to toggle palette
 call togglebg#map("<F5>")
 
-"##############################################################################
-Bundle 'majutsushi/tagbar'
-noremap <leader>t :TagbarToggle<CR>
-" quit when taglist is the last open window
-let Tlist_Exit_OnlyWindow=1
-" put focus on the taglist window when it opens
-let Tlist_GainFocus_On_ToggleOpen=1
 
 "##############################################################################
 Bundle 'airblade/vim-gitgutter'
@@ -277,6 +283,7 @@ let g:gitgutter_highlight_lines = 1
 " consistent coloring with line number column
 highlight clear SignColumn
 
+
 "##############################################################################
 "TODO use vim with Python 2.4+ support
 Bundle 'sjl/gundo.vim'
@@ -284,6 +291,13 @@ noremap <leader>u :GundoToggle<CR>
 " show gundo at bottom
 let g:gundo_preview_bottom = 1
 
+
+"##############################################################################
+Bundle 'bling/vim-bufferline'
+"##############################################################################
+Bundle 'mhinz/vim-startify'
+"##############################################################################
+Bundle 'myusuf3/numbers.vim'
 "##############################################################################
 Bundle 'kien/ctrlp.vim'
 "##############################################################################
