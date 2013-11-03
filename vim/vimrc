@@ -35,12 +35,6 @@ autocmd FocusLost * :wa
 " faster save
 nnoremap <leader>w :w!<CR>
 
-" easy window navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
 " more natural split opening
 set splitbelow
 set splitright
@@ -320,3 +314,5 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tsaleh/vim-matchit'
 "##############################################################################
 Bundle 'justinmk/vim-syntax-extra'
+"##############################################################################
+Bundle 'spolu/dwm.vim'
