@@ -12,8 +12,7 @@ Xft.hintstyle: hintslight
 ! xterm ----------------------------------------------------
 xterm*bellIsUrgent: true
 xterm*borderWidth: 0
-xterm*faceName: terminus:bold:pixelsize=14
-!xterm*font: -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+xterm*faceName: xft:DejaVu Sans Mono for Powerline:style=Bold:size=10
 xterm*dynamicColors: true
 xterm*utf8: 2
 xterm*eightBitInput: false
