@@ -1,12 +1,39 @@
 "##############################################################################
-"#                                                                            #
-"#    General Config                                                          #
-"#                                                                            #
+"#    Basic stuff                                                             #
 "##############################################################################
 
+" this aint your daddy's vi
+set nocompatible
+" change buffer without saving
+set hidden
 " show line numbers
 set number
+" close potential security hole by ignoring modelines in files
+set modelines=0
+" no delay when escaping
+set ttimeoutlen=0
+" show status line
+set laststatus=2
+" modern encoding default
+set encoding=utf-8
+" shit is annoying
+set noerrorbells
+set novisualbell
+" more natural split opening
+set splitbelow
+set splitright
+" make menu useful
+set wildmenu
+" use mouse for selection
+set mouse=a
+" no redraw while executing macros
+set nolazyredraw
+" show informative title
+set title
+" automatically reload files on external change
+set autoread
 
+"------------------------------------------------------------------------------
 " use the damn hjkl keys
 noremap <up> <nop>
 noremap <down> <nop>
@@ -17,153 +44,69 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" close potential security hole by ignoring modelines in files
-set modelines=0
-
-" add line at 80 characters
-set colorcolumn=80
-
-" autosave when leaving the window
-autocmd FocusLost * :wa
-
-" strip trailing whitespace
-"nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
-" automatically strip trailing whitespace on save
-"autocmd BufWritePre * :%s/\s\+$//e
-
-" faster save
-nnoremap <leader>w :w!<CR>
-
-" more natural split opening
-set splitbelow
-set splitright
-
-" max out the height of the current split
-"ctrl + w _
-" max out the width of the current split
-"ctrl + w |
-" normalize all split sizes, which is very handy when resizing terminal
-"ctrl + w =
-" swap top/bottom or left/right split
-"Ctrl+W R
-" break out current window into a new tabview
-"Ctrl+W T
-" close every window in the current tabview but the current one
-"Ctrl+W o
-
-" syntax highlighting is kinda useful
-syntax on
-
-" set leader key
-let mapleader=","
-
-" edit vimrc
-noremap <silent> <leader>ev :e $MYVIMRC<CR>
-" reload vimrc
-noremap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" toggle whitespace visible
-noremap <leader>i :set list! <CR>
-
-" fix indents
-noremap <leader>in gg=G''
-
-" copy selected text
-noremap <leader>c :w !xsel -i -b<CR>
-
-" next tab
-noremap <leader>w gt<CR>
-" previous tab
-noremap <leader>q gT<CR>
-
-" use very magic search patterns (standard regex)
-nnoremap / /\v
-vnoremap / /\v
-
-" scroll faster
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-
+"------------------------------------------------------------------------------
 " continue indentation onto next line
 set autoindent
-
 " copy indentation structure of previous lines
 set copyindent
-
-" show matching bracket
-set showmatch
-
-" use spaces for tab
-set expandtab
-
 " make vim smart about tabs
 set smarttab
-
+" use spaces for tab
+set expandtab
 " 4 spaces to tab
 set shiftwidth=4
 set softtabstop=4
 
-" make deleting useful
-set backspace=indent,eol,start
-
-" make menu useful
-set wildmenu
-
-" use mouse for selection
-set mouse=a
-
-" no redraw while executing macros
-set nolazyredraw 
-
-" shit is annoying
-set noerrorbells
-set novisualbell
-
+"------------------------------------------------------------------------------
 " keep 5 lines visible below cursor
 set scrolloff=5
-
 " search is case-insensitive unless there is a capital letter
 set smartcase
-
 " show search results as you type
 set incsearch
-
 " highlight all matches for previous search
 set hlsearch
+" show matching bracket
+set showmatch
+" use very magic search patterns (standard regex)
+nnoremap / /\v
+vnoremap / /\v
 
-" automatically reload files on change
-set autoread
+"------------------------------------------------------------------------------
+" dont save backup files
+set nobackup
+" dont make swap files
+set noswapfile
 
-" show informative title
-set title
+"------------------------------------------------------------------------------
+" characters treated as whitespace
+set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
+" make deleting useful
+set backspace=indent,eol,start
+" highlight conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" change buffer - without saving
-set hidden
+"------------------------------------------------------------------------------
+" add line at 80 characters
+set colorcolumn=80
+" show current line
+set cursorline
+" show current column
+set cursorcolumn
 
-" search in normal
-map <space> /
-map <c-space> ?
-
+"------------------------------------------------------------------------------
 " enable code folding
 set foldenable
-
 " hide fold column on start
 set foldcolumn=0
-
 " set folds by syntax
 set foldmethod=syntax
-
 " start with all folds open
 set foldlevelstart=99
-
 " specify commands which open folds
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-
-" toggle fold open/close
-nnoremap <leader>z za
-
-" toggle fold column show/hide
+" make foldcolumn 4 characters wide
+let g:last_fold_column_width = 4
 function! FoldColumnToggle()
   if &foldcolumn
     let g:last_fold_column_width = &foldcolumn
@@ -172,63 +115,79 @@ function! FoldColumnToggle()
     let &l:foldcolumn = g:last_fold_column_width
   endif
 endfunction
-nnoremap <leader>f :call FoldColumnToggle()<CR>
 
-" make foldcolumn 4 characters wide
-let g:last_fold_column_width = 4
-
-" make : commands easier to type
-nnoremap ; :
-
-" keep semicolon accessible for idk what
-nnoremap <leader>; ;
-
-" show current line
-set cursorline
-
-" show current column
-set cursorcolumn
-
-" dont save backup files
-set nobackup
-
-" dont make swap files
-set noswapfile
-
-" jump to matching bracket
-nnoremap <Tab> %
-vnoremap <Tab> %
-
-" highlight conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-" jump to next conflict marker
-nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-
-" characters treated as whitespace
-set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
-highlight SpecialKey ctermfg=6
-highlight NonText ctermfg=6
-
+"------------------------------------------------------------------------------
+" file specific settings
+filetype plugin indent on
+" syntax highlighting is kinda useful
+syntax on
 " syntax highlighting for arudino files
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
-" syntax highlighting for todo files
-autocmd BufNewFile,BufReadPost *.t0d0,TODO set filetype=vimt0d0
-
-" file specific settings
-filetype plugin indent on
-
-" load project specific files
+"------------------------------------------------------------------------------
+" load directory specific files
+"   only works when vim is invoked in same directory as .vim.custom
+"   TODO implement recursive search
 if filereadable(".vim.custom")
   source .vim.custom
 endif
 
 
 "##############################################################################
-"#                                                                            #
+"#    Leader keybindings                                                      #
+"##############################################################################
+
+" set leader key
+let mapleader=","
+
+" edit vimrc
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+" reload vimrc
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" toggle whitespace visible
+nnoremap <leader>i :set list! <CR>
+
+" fix indents
+nnoremap <leader>in gg=G''
+
+" copy selected text
+nnoremap <leader>c :w !xsel -i -b<CR>
+
+" next tab
+nnoremap <leader>w gt<CR>
+" previous tab
+nnoremap <leader>q gT<CR>
+
+" toggle fold open/close
+nnoremap <leader>z za
+
+" toggle fold column show/hide
+nnoremap <leader>f :call FoldColumnToggle()<CR>
+
+" scroll faster
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
+
+" search in normal
+nnoremap <space> /
+nnoremap <c-space> ?
+
+" make : commands easier to type
+nnoremap ; :
+" keep semicolon accessible for idk what
+nnoremap <leader>; ;
+
+" jump to matching bracket
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" jump to next conflict marker
+nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+
+
+"##############################################################################
 "#    vundle/plugin config                                                    #
-"#                                                                            #
 "##############################################################################
 " add vundle to runtime path
 set runtimepath+=~/.vim/bundle/vundle/
@@ -237,8 +196,7 @@ call vundle#rc()
 " let vundle manage vundle
 Bundle 'gmarik/vundle'
 
-
-""##############################################################################
+"------------------------------------------------------------------------------
 "Bundle 'majutsushi/tagbar'
 "noremap <leader>t :TagbarToggle<CR>
 "" quit when taglist is the last open window
@@ -246,29 +204,23 @@ Bundle 'gmarik/vundle'
 "" put focus on the taglist window when it opens
 "let Tlist_GainFocus_On_ToggleOpen=1
 
-
-"##############################################################################
+"------------------------------------------------------------------------------
 Bundle 'bling/vim-airline'
+" use fancy symbols
 let g:airline_powerline_fonts = 1
-set ttimeoutlen=50
 let g:airline_theme='powerlineish'
-" show status line
-set laststatus=2 "TODO fix this
-" modern encoding default
-set encoding=utf-8
 
-
-"##############################################################################
+"------------------------------------------------------------------------------
 Bundle 'altercation/vim-colors-solarized'
-"##############################################################################
+highlight SpecialKey ctermfg=6
+highlight NonText ctermfg=6
 colorscheme solarized
-" use dark palette
 set background=dark
 " map F5 to toggle palette
 call togglebg#map("<F5>")
 
+"------------------------------------------------------------------------------
 
-"##############################################################################
 Bundle 'airblade/vim-gitgutter'
 noremap <leader>gg :GitGutterToggle<CR>
 " off by default
@@ -277,42 +229,29 @@ let g:gitgutter_highlight_lines = 1
 " consistent coloring with line number column
 highlight clear SignColumn
 
-
-"##############################################################################
-"TODO use vim with Python 2.4+ support
+"------------------------------------------------------------------------------
 Bundle 'sjl/gundo.vim'
 noremap <leader>u :GundoToggle<CR>
 " show gundo at bottom
 let g:gundo_preview_bottom = 1
 
-
-"##############################################################################
-Bundle 'bling/vim-bufferline'
-"##############################################################################
-Bundle 'mhinz/vim-startify'
-"##############################################################################
-Bundle 'myusuf3/numbers.vim'
-"##############################################################################
-Bundle 'kien/ctrlp.vim'
-"##############################################################################
+"------------------------------------------------------------------------------
 Bundle 'metalelf0/vimt0d0'
-"##############################################################################
+" syntax highlighting for todo files
+autocmd BufNewFile,BufReadPost *.t0d0,TODO set filetype=vimt0d0
+
+"------------------------------------------------------------------------------
+Bundle 'bling/vim-bufferline'
+Bundle 'mhinz/vim-startify'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
-"##############################################################################
 Bundle 'flazz/vim-colorschemes'
-"##############################################################################
 Bundle 'ervandew/supertab'
-"##############################################################################
 Bundle 'scrooloose/syntastic'
-"##############################################################################
 Bundle 'Lokaltog/vim-easymotion'
-"##############################################################################
 Bundle 'tpope/vim-fugitive'
-"##############################################################################
 Bundle 'tpope/vim-markdown'
-"##############################################################################
 Bundle 'tsaleh/vim-matchit'
-"##############################################################################
 Bundle 'justinmk/vim-syntax-extra'
-"##############################################################################
 Bundle 'spolu/dwm.vim'
