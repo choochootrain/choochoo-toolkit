@@ -242,11 +242,11 @@ Bundle 'gmarik/vundle'
 
 "##############################################################################
 Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 set ttimeoutlen=50
 let g:airline_theme='powerlineish'
 " show status line
-"set laststatus=2 "TODO patch font
+"set laststatus=2 "TODO fix this
 " modern encoding default
 set encoding=utf-8
 
