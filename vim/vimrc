@@ -127,7 +127,6 @@ autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 "------------------------------------------------------------------------------
 " load directory specific files
 "   only works when vim is invoked in same directory as .vim.custom
-"   TODO implement recursive search
 if filereadable(".vim.custom")
   source .vim.custom
 endif
