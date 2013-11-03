@@ -1,8 +1,4 @@
-[X] write distribution script to update softlinks
-[X] add muttrc
 [ ] add centerim
-[ ] clean up vim
-[ ] switch to vundle
 [ ] clean up zsh
 [ ] move user config from zshrc to .env
 [ ] add tmux/byobu
