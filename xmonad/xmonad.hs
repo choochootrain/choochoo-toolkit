@@ -71,7 +71,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), safeSpawn "dmenu_run" ["-h", "16", "-x", "85", "-w", "550", "-nb", myBarColor, "-nf", myBarFontColor, "-sb", myNormalBorderColor, "-sf", myBarColor])
+    , ((modm,               xK_p     ), safeSpawn "dmenu_run" ["-h", "15", "-x", "80", "-w", "500", "-nb", myBarColor, "-nf", myBarFontColor, "-sb", myFocusedBorderColor, "-sf", myBarColor, "-p", ">"])
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -183,7 +183,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts . smartBorders $ tiled ||| Mirror tiled ||| Full
+myLayout = smartBorders $ tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
