@@ -9,19 +9,22 @@ xmodmap -e 'clear Lock'
 xmodmap -e 'keycode 0x42 = Escape'
 xmodmap -e 'keycode 9 = Delete'
 
-#set cursor
+# set cursor
 xsetroot -cursor_name left_ptr
-#set xresources
+# set xresources
 xrdb -merge ~/.Xresources
 
-#set wallpaper
+# set wallpaper
 sh ~/.fehbg
 
-#bind keys
+# bind keys
 xbindkeys
 
-#hide the mouse
+# hide the mouse
 hhp &
+
+# auto lock screen after inactivity or sleep
+xautolock -time 10 -lockaftersleep -locker slimlock &
 
 #start wm
 exec xmonad
