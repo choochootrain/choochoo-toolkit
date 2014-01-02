@@ -73,6 +73,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_p     ), safeSpawn "dmenu_run" ["-h", "15", "-x", "80", "-w", "500", "-nb", myBarColor, "-nf", myBarFontColor, "-sb", myFocusedBorderColor, "-sf", myBarColor, "-p", ">"])
 
+    -- lock screen
+    , ((modm .|. shiftMask, xK_l     ), safeSpawn "slimlock" [])
+
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
