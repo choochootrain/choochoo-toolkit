@@ -1,0 +1,52 @@
+Config
+     { font="xft:DejaVu Sans Mono for Powerline:size=8"
+     , bgColor = "#0F0F0F"
+     , fgColor = "#839496"
+     , position = TopSize C 100 15
+     , lowerOnStart = True
+     , commands =
+       [ Run MultiCpu
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/cpu.xbm/></fc> <total>%"
+            , "-L", "25"
+            , "-H", "75"
+            , "-l", "green"
+            , "-n", "yellow"
+            , "-h", "red"
+            ]
+            10
+       , Run Wireless "wlan0"
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/wifi.xbm/></fc> <essid>"
+            , "-L", "128"
+            , "-H", "512"
+            , "-l", "green"
+            , "-n", "yellow"
+            , "-h", "red"
+            ]
+            10
+       , Run Memory
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/mem.xbm/></fc> <usedratio>%"
+            , "-L", "25"
+            , "-H", "75"
+            , "-l", "green"
+            , "-n", "yellow"
+            , "-h", "red"
+            ]
+            10
+       , Run BatteryP
+            [ "BAT1" ]
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/battery-full.xbm/></fc><left>%"
+            , "-L", "25"
+            , "-H", "75"
+            , "-h", "green"
+            , "-n", "yellow"
+            , "-l", "red"
+            ]
+            10
+       , Run Date "%a %b %_d %H:%M" "date" 10
+       , Run StdinReader
+       ]
+     , sepChar = "%"
+     , alignSep = "}{"
+     , template = "<fc=#3388FF><icon=/home/hp/.config/dzen2/arch.xbm/></fc>arch<fc=#3388FF>linux</fc>}%StdinReader%{ %wlan0wi%   %multicpu%   %memory%   %battery%   <fc=#3388FF><icon=/home/hp/.config/dzen2/clock.xbm/></fc> %date% "
+     }
+
