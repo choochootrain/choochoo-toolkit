@@ -104,10 +104,9 @@ killall dzen2
 
 echo -e " $(icon arch) $(color $GY)arch$(color $FG)linux" | dzen2 -p -e - -h $HEIGHT -w '100' -ta l -fg $FG -bg $BG -fn $FONT &
 
-##loops forever outputting a line every SLEEP_SEC secs
-##while :; do
-##  #FG=`cat /home/hp/.config/colorscheme/fg`
-##  echo -E "$(brightness)    $(wifi)    $(volume)    $(power)    $(datetime) "
-##
-##  sleep $SLEEP_SEC
-##done | dzen2 -x 800 -e - -h $HEIGHT -w '566' -ta r -fg $FG -bg $BG -fn $FONT &
+loops forever outputting a line every SLEEP_SEC secs
+while :; do
+  echo -E "$(volume)    $(power)    $(datetime) "
+
+  sleep $SLEEP_SEC
+done | dzen2 -x 800 -e - -h $HEIGHT -w '566' -ta r -fg $FG -bg $BG -fn $FONT &
