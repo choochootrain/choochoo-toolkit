@@ -9,6 +9,7 @@ Configuration for all the tools I use.
 * mutt
 * python
 * spectrwm
+  replace with xmonad/xmobar
 * vim
 * x11
 * zsh
