@@ -24,4 +24,4 @@ xbindkeys
 unclutter -idle 3 -noevents -jitter 10 &
 
 #start wm
-exec spectrwm
+exec xmonad
