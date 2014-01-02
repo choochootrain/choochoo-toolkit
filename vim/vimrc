@@ -53,9 +53,9 @@ set copyindent
 set smarttab
 " use spaces for tab
 set expandtab
-" 4 spaces to tab
-set shiftwidth=4
-set softtabstop=4
+" 2 spaces to tab
+set shiftwidth=2
+set softtabstop=2
 
 "------------------------------------------------------------------------------
 " keep 5 lines visible below cursor
