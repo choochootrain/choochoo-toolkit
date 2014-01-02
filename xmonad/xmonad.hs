@@ -65,9 +65,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_p     ), safeSpawn "dmenu_run" ["-h", "16", "-x", "85", "-w", "550", "-nb", myBarColor, "-nf", myBarFontColor, "-sb", myNormalBorderColor, "-sf", myBarColor])
 
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
