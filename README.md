@@ -8,8 +8,8 @@ Configuration for all the tools I use.
 * jumanji
 * mutt
 * python
-* spectrwm
-  replace with xmonad/xmobar
+* xmonad
+* xmobar
 * vim
 * x11
 * zsh
