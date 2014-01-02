@@ -21,7 +21,7 @@ sh ~/.fehbg
 xbindkeys
 
 #hide the mouse
-unclutter -idle 3 -noevents -jitter 10 &
+hhp &
 
 #start wm
 exec xmonad
