@@ -8,8 +8,15 @@
 --
 
 import XMonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run
+
 import Data.Monoid
+import System.IO
 import System.Exit
 
 import qualified XMonad.StackSet as W
@@ -241,11 +248,20 @@ myLogHook = return ()
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
+-- Xmobar hook
+
+myXmobarPP = xmobarPP { ppLayout = const "", ppTitle = const "" }
+
+toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
+toggleStrutsKey XConfig { modMask = modm } = (modm, xK_b)
+
+------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad defaults
+main :: IO ()
+main = xmonad =<< statusBar "xmobar" myXmobarPP toggleStrutsKey (ewmh myConfig)
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -253,7 +269,7 @@ main = xmonad defaults
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
+myConfig = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
