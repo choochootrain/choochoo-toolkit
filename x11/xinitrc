@@ -17,9 +17,6 @@ xrdb -merge ~/.Xresources
 # set wallpaper
 sh ~/.fehbg
 
-# bind keys
-xbindkeys
-
 # hide the mouse
 hhp &
 

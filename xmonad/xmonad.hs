@@ -16,6 +16,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run
 
+import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.IO
 import System.Exit
@@ -75,6 +76,21 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- lock screen
     , ((modm .|. shiftMask, xK_l     ), safeSpawn "slimlock" [])
+
+    -- raise volume
+    , ((0,  xF86XK_AudioRaiseVolume  ), safeSpawn "amixer" ["set", "Master", "5%+", "unmute"])
+
+    -- lower volume
+    , ((0,  xF86XK_AudioLowerVolume  ), safeSpawn "amixer" ["set", "Master", "5%-", "unmute"])
+
+    -- mute volume
+    , ((0,  xF86XK_AudioMute         ), safeSpawn "amixer" ["set", "Master", "toggle"])
+
+    -- increase backlight brightness
+    , ((0,  xF86XK_MonBrightnessUp   ), safeSpawn "xbacklight" ["-inc", "15"])
+
+    -- decrease backlight brightness
+    , ((0,  xF86XK_MonBrightnessDown ), safeSpawn "xbacklight" ["-dec", "15"])
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
