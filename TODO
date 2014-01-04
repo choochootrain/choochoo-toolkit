@@ -10,15 +10,12 @@ Not started
 [ ] duplicity/duply backups
 [ ] Todoist console app
 [ ] use cpu govnah
-[ ] gpg password
 [ ] better battery life
 [ ] install bastille
 [ ] touchegg
-[ ] webgl
 /*[ ] splash screen*/
 /*[ ]   automake1.10 error*/
 [ ] mpd
-[ ] xbindkeys for function keys
 [ ] fish shell
 
 In progress
@@ -34,8 +31,6 @@ In progress
 [X]   installed binaries
 [X]   set up preferences
 [X]   installed scons
-[.] sleep on laptop lid
-[ ]   install slimlock to lock on suspend
 [.] vim
 [X]   supertab
 [X]   powerline
@@ -63,7 +58,10 @@ In progress
 [X]   mount windows partition
 [ ]   mount plugged in drives
 
-
+[X] gpg password
+[X] webgl
+[X] sleep on laptop lid
+[X]   install slimlock to lock on suspend
 [X] backlight
 [X]   xbacklight keybindings (spectrwm)
 [X]   keyboard backlight enabled in bios
