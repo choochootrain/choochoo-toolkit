@@ -47,6 +47,6 @@ Config
        ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "<fc=#3388FF><icon=/home/hp/.config/dzen2/arch.xbm/></fc>arch<fc=#3388FF>linux</fc>}%StdinReader%{ %wlan0wi%   %multicpu%   %memory%   %battery%   <fc=#3388FF><icon=/home/hp/.config/dzen2/clock.xbm/></fc> %date% "
+     , template = "<action=xterm -e 'sudo aura -Syyu && read'><fc=#3388FF><icon=/home/hp/.config/dzen2/arch.xbm/></fc>arch<fc=#3388FF>linux</fc></action>}%StdinReader%{ <action=xterm -e 'sudo wifi-menu'>%wlan0wi%</action>   <action=xterm -e htop>%multicpu%</action>   <action=xterm -e htop>%memory%</action>   <action=xterm -e 'upower -d && read'>%battery%</action>   <action=xterm -e 'cal -3 && read'><fc=#3388FF><icon=/home/hp/.config/dzen2/clock.xbm/></fc> %date%</action> "
      }
 
