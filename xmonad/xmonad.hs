@@ -92,11 +92,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- decrease backlight brightness
     , ((0,  xF86XK_MonBrightnessDown ), safeSpawn "xbacklight" ["-dec", "15"])
 
-    --take a screenshot of entire display
+    -- take a screenshot of entire display
     , ((0,                  xK_Print ), safeSpawn "scrot" ["screen_%Y-%m-%d-%H-%M-%S.png", "-d", "1"])
 
-    --take a screenshot of focused window
+    -- take a screenshot of focused window
     , ((modm,               xK_Print ), safeSpawn "scrot" ["window_%Y-%m-%d-%H-%M-%S.png", "-d", "1", "--select"])
+
+    -- rotate background
+    , ((modm .|. shiftMask, xK_b     ), safeSpawn "/home/hp/.fehbg" [])
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
