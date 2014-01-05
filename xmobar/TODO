@@ -2,6 +2,5 @@ volume
 brightness
 rewrite plugins to use dynamic icons
 xmonad window status
-move icons
 add urgency hint support
 add layout type

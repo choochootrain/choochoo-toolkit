@@ -6,7 +6,7 @@ Config
      , lowerOnStart = True
      , commands =
        [ Run MultiCpu
-            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/cpu.xbm/></fc> <total>%"
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.xmobar/cpu.xbm/></fc> <total>%"
             , "-L", "25"
             , "-H", "75"
             , "-l", "green"
@@ -15,7 +15,7 @@ Config
             ]
             10
        , Run Wireless "wlan0"
-            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/wifi.xbm/></fc> <essid>"
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.xmobar/wifi.xbm/></fc> <essid>"
             , "-L", "128"
             , "-H", "512"
             , "-l", "green"
@@ -24,7 +24,7 @@ Config
             ]
             10
        , Run Memory
-            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/mem.xbm/></fc> <usedratio>%"
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.xmobar/mem.xbm/></fc> <usedratio>%"
             , "-L", "25"
             , "-H", "75"
             , "-l", "green"
@@ -34,7 +34,7 @@ Config
             10
        , Run BatteryP
             [ "BAT1" ]
-            [ "-t", "<fc=#3388FF><icon=/home/hp/.config/dzen2/battery-full.xbm/></fc><left>%"
+            [ "-t", "<fc=#3388FF><icon=/home/hp/.xmobar/battery-full.xbm/></fc><left>%"
             , "-L", "25"
             , "-H", "75"
             , "-h", "green"
@@ -47,6 +47,6 @@ Config
        ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "<action=xterm -e 'sudo aura -Syyu; sudo aura -Ayyu; read'><fc=#3388FF><icon=/home/hp/.config/dzen2/arch.xbm/></fc>arch<fc=#3388FF>linux</fc></action>}%StdinReader%{ <action=xterm -e 'sudo wifi-menu'>%wlan0wi%</action>   <action=xterm -e htop>%multicpu%</action>   <action=xterm -e htop>%memory%</action>   <action=xterm -e 'upower -d; read'>%battery%</action>   <action=xterm -e 'cal -3; read'><fc=#3388FF><icon=/home/hp/.config/dzen2/clock.xbm/></fc> %date%</action> "
+     , template = "<action=xterm -e 'sudo aura -Syyu; sudo aura -Ayyu; read'><fc=#3388FF><icon=/home/hp/.xmobar/arch.xbm/></fc>arch<fc=#3388FF>linux</fc></action>}%StdinReader%{ <action=xterm -e 'sudo wifi-menu'>%wlan0wi%</action>   <action=xterm -e htop>%multicpu%</action>   <action=xterm -e htop>%memory%</action>   <action=xterm -e 'upower -d; read'>%battery%</action>   <action=xterm -e 'cal -3; read'><fc=#3388FF><icon=/home/hp/.xmobar/clock.xbm/></fc> %date%</action> "
      }
 
