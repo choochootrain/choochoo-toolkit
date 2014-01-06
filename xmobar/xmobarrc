@@ -43,10 +43,11 @@ Config
             ]
             10
        , Run Date "%a %b %_d %H:%M" "date" 10
+       , Run Com "sh" ["/home/hp/.xmobar/volume.sh"] "volume" 10
        , Run StdinReader
        ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "<action=xterm -e 'sudo aura -Syyu; sudo aura -Ayyu; read'><fc=#3388FF><icon=/home/hp/.xmobar/arch.xbm/></fc>arch<fc=#3388FF>linux</fc></action>}%StdinReader%{ <action=xterm -e 'sudo wifi-menu'>%wlan0wi%</action>   <action=xterm -e htop>%multicpu%</action>   <action=xterm -e htop>%memory%</action>   <action=xterm -e 'upower -d; read'>%battery%</action>   <action=xterm -e 'cal -3; read'><fc=#3388FF><icon=/home/hp/.xmobar/clock.xbm/></fc> %date%</action> "
+     , template = "<action=xterm -e 'sudo aura -Syyu; sudo aura -Ayyu; read'><fc=#3388FF><icon=/home/hp/.xmobar/arch.xbm/></fc>arch<fc=#3388FF>linux</fc></action>}%StdinReader%{ <action=xterm -e 'sudo wifi-menu'>%wlan0wi%</action>   <action=xterm -e htop>%multicpu%</action>   <action=xterm -e htop>%memory%</action>   <action=xterm -e 'alsamixer'>%volume%</action>   <action=xterm -e 'upower -d; read'>%battery%</action>   <action=xterm -e 'cal -3; read'><fc=#3388FF><icon=/home/hp/.xmobar/clock.xbm/></fc> %date%</action> "
      }
 
