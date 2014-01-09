@@ -1,5 +1,4 @@
 #!/bin/sh
-ln -sf `pwd`/xbindkeysrc ~/.xbindkeysrc
 ln -sf `pwd`/xinitrc ~/.xinitrc
 ln -sf `pwd`/Xmodmap ~/.Xmodmap
 ln -sf `pwd`/xprofile ~/.xprofile
