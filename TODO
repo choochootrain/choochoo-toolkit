@@ -23,7 +23,7 @@ In progress
 [.] organize scripts n dotfiles
 [.] monitors
 [X]   switch to external monitor
-[ ]   extend display
+[ ]   multihead
 [ ]   auto detect
 [.] arduino
 [ ]   run not as root
