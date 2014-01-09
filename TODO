@@ -3,6 +3,7 @@
 [ ] move user config from zshrc to .env
 [ ] add tmux/byobu
 [ ] add mplayer
+[ ] use yeganesh wrapper for dmenu
 
 Not started
 -----------
