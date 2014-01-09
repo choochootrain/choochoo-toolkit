@@ -3,7 +3,6 @@
 [ ] move user config from zshrc to .env
 [ ] add tmux/byobu
 [ ] add mplayer
-[ ] clean up distribution script
 
 Not started
 -----------
@@ -58,6 +57,7 @@ In progress
 [X]   mount windows partition
 [ ]   mount plugged in drives
 
+[X] clean up distribution script
 [X] gpg password
 [X] webgl
 [X] sleep on laptop lid
