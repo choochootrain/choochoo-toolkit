@@ -4,6 +4,7 @@
 [ ] add tmux/byobu
 [ ] add mplayer
 [ ] use yeganesh wrapper for dmenu
+[ ] fix haskell package setup
 
 Not started
 -----------

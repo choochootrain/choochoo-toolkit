@@ -3,4 +3,3 @@ customize pp output
 add cycleWS keybindings for multihead
 add TagWindows keybindings
 add IndependentScreens config for workspaces
-review vicfryzel's xmonad config
