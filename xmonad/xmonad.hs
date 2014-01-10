@@ -13,9 +13,9 @@ import System.IO
 import System.Exit
 
 main :: IO ()
-main = xmonad =<< statusBar "xmobar" myXmobarPP toggleStrutsKey (ewmh myConfig)
-
-myConfig = defaultConfig
+main = do
+    h <- spawnPipe "xmobar"
+    xmonad $ ewmh defaultConfig
         { terminal           = "xterm"
         , modMask            = myModMask
         , normalBorderColor  = myNormalBorderColor
@@ -23,8 +23,12 @@ myConfig = defaultConfig
         , layoutHook         = myLayout
         , manageHook         = myManageHook
         , handleEventHook    = handleEventHook defaultConfig <+> fullscreenEventHook
+        , logHook            = dynamicLogWithPP $ xmobarPP
+                                                  { ppLayout = const ""
+                                                  , ppTitle  = const ""
+                                                  , ppOutput = hPutStrLn h
+                                                  }
         } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
-        where
 
 -- Use alt key as mod
 myModMask            = mod1Mask
@@ -84,6 +88,11 @@ myExtraKeys =
         safeSpawn "slimlock" []
       )
 
+    -- toggle xmobar
+    , ((mod .|. shift, xK_b),
+        sendMessage ToggleStruts
+      )
+
     -- raise volume
     , ((0, xF86XK_AudioRaiseVolume),
         safeSpawn "amixer" ["set", "Master", "5%+", "unmute"]
@@ -127,9 +136,3 @@ myExtraKeys =
             shift          = shiftMask
             myBarColor     = "#0f0f0f"
             myBarFontColor = "#839496"
-
-myXmobarPP = xmobarPP { ppLayout = const "", ppTitle = const "" }
-
--- toggle xmobar visibility
-toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
-toggleStrutsKey XConfig { modMask = modm } = (modm, xK_b)
