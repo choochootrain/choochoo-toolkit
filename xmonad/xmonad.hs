@@ -24,9 +24,10 @@ main = do
         , manageHook         = myManageHook
         , handleEventHook    = handleEventHook defaultConfig <+> fullscreenEventHook
         , logHook            = dynamicLogWithPP $ xmobarPP
-                                                  { ppLayout = const ""
-                                                  , ppTitle  = const ""
-                                                  , ppOutput = hPutStrLn h
+                                                  { ppTitle           = const ""
+                                                  , ppLayout          = xmobarColor myFocusedBorderColor "" . myLayoutString
+                                                  , ppSep             = " | "
+                                                  , ppOutput          = hPutStrLn h
                                                   }
         } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
 
@@ -136,3 +137,10 @@ myExtraKeys =
             shift          = shiftMask
             myBarColor     = "#0f0f0f"
             myBarFontColor = "#839496"
+
+-- Show spectrwm layout symbols
+myLayoutString x = case x of
+              "Tall"        -> "[|]"
+              "Mirror Tall" -> "[-]"
+              "Full"        -> "[ ]"
+              _             -> x
