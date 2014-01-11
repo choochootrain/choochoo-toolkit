@@ -1,5 +1,5 @@
 add 10+ workspace support with tags
-customize pp output
 add cycleWS keybindings for multihead
 add TagWindows keybindings
 add IndependentScreens config for workspaces
+add urgency hint support to pp output
