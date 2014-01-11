@@ -5,6 +5,7 @@
 [ ] add mplayer
 [ ] use yeganesh wrapper for dmenu
 [ ] fix haskell package setup
+[ ] add autoenv to zsh
 
 Not started
 -----------
