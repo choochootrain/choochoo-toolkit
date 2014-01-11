@@ -5,6 +5,11 @@
 #
 ######################################################################
 
+# add personal config stuff
+[[ -f ~/.zshenv ]] && source ~/.zshenv
+[[ -f ~/.zaliases ]] && source ~/.zaliases
+[[ -f ~/.zprivate ]] && source ~/.zprivate
+
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
 #setopt NOTIFY
@@ -29,6 +34,7 @@ setopt   notify globdots correct pushdtohome cdablevars autolist
 setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
+setopt   extendedglob
 unsetopt bgnice autoparamslash
 
 # Autoload zsh modules when they are referenced
@@ -37,25 +43,16 @@ zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 
-
-PATH="/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
-TZ="America/Los_Angeles"
-HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
-SAVEHIST=1000
-HOSTNAME="`hostname`"
-PAGER='less'
-EDITOR='vim'
-    autoload colors zsh/terminfo
-    if [[ "$terminfo[colors]" -ge 8 ]]; then
-   colors
-    fi
-    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-   eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-   (( count = $count + 1 ))
-    done
-    PR_NO_COLOR="%{$terminfo[sgr0]%}"
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+  colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+  (( count = $count + 1 ))
+done
+PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # This zsh function is called whenever changing directories and
 # shows the current git branch in the prompt
@@ -98,36 +95,6 @@ unsetopt ALL_EXPORT
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-# # --------------------------------------------------------------------
-# # aliases
-# # --------------------------------------------------------------------
-
-alias slrn="slrn -n"
-alias man='LC_ALL=C LANG=C man'
-alias f=finger
-alias ll='ls -al'
-alias ls='ls --color=auto '
-
-#chpwd() {
-#     [[ -t 1 ]] || return
-#     case $TERM in
-#     sun-cmd) print -Pn "\e]l%~\e\\"
-#     ;;
-#    *xterm*|screen|rxvt|(dt|k|E)term) print -Pn "\e]2;%~\a"
-#    ;;
-#    esac
-#}
-selfupdate(){
-        URL="http://stuff.mit.edu/~jdong/misc/zshrc"
-        echo "Updating zshrc from $URL..."
-        echo "Press Ctrl+C within 5 seconds to abort..."
-        sleep 5
-        cp ~/.zshrc ~/.zshrc.old
-        wget $URL -O ~/.zshrc
-        echo "Done; existing .zshrc saved as .zshrc.old"
-}
-#chpwd
-
 autoload -U compinit
 compinit
 bindkey "^?" backward-delete-char
@@ -216,74 +183,3 @@ zstyle ':completion:*:ssh:*' tag-order \
 zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
-
-export PATH=~/bin:/usr/local/heroku/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:~/.cabal/bin:~/node_modules/.bin:$PATH
-alias vi="vim"
-alias xclip="xclip -sel c"
-alias adb="env -u LD_PRELOAD adb"
-
-#color maven
-alias maven="command mvn"
-color_maven() {
-  maven $* | sed -e 's/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/[1;32mTests run: \1[0m, Failures: [1;31m\2[0m, Errors: [1;33m\3[0m, Skipped: [1;34m\4[0m/g' \
-    -e 's/\(\[WARN\].*\)/[1;33m\1[0m/g' \
-    -e 's/\(WARN.*\)/[0;33m\1[0m/g' \
-    -e 's/\(\[INFO\].*\)/[1;32m\1[0m/g' \
-    -e 's/\(\[ERROR\].*\)/[1;31m\1[0m/g' \
-    -e 's/\(BUILD FAILURE.*\)/[1;31m\1[0m/g' \
-    -e 's/\(FAILURE!.*\)/[1;31m\1[0m/g' \
-    -e 's/\(BUILD SUCCESS.*\)/[1;37m\1[0m/g' \
-    -e 's/\(SUCCESS.*\)/[1;37m\1[0m/g'
-
-}
-alias mvn=color_maven
-
-#[ -n "$XTERM_VERSION" ] && transset-df -a 0.9 >/dev/null
-#
-
-export GEM_HOME=~/.gem/ruby/2.0.0
-export PYTHONSTARTUP=~/.pyrc
-export NODE_PATH=/bin:/usr/lib/node_modules
-
-alias pacman="pacmatic"
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-alias cdg="cd `findup .git`; cd .."
-alias gitc="git log | grep Author | sed 's/Author: //' | sort -r | uniq -c | sort -k +1n"
-alias dmesg="dmesg -deH"
-
-# pro cd function
-pd() {
-  local projDir=$(pro search $1)
-  cd ${projDir}
-}
-
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/hp/perl5";
-export PERL_MB_OPT="--install_base /home/hp/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/hp/perl5";
-export PERL5LIB="/home/hp/perl5/lib/perl5:$PERL5LIB";
-export PATH="/home/hp/perl5/bin:$PATH";
-
-#git aliases
-alias gs='git status'
-
-alias gd='git diff'
-alias gdc='gd --cached'
-
-alias ga='git add'
-alias gr='git rm'
-alias gc='git commit'
-
-alias gps='git push'
-alias gpuom='gps origin master'
-
-alias gpl='git pull'
-alias gplom='gpl origin master'
-
-alias gl='git lg'
-
-alias psgrep='ps aux | grep'
-
-[[ -f ~/.zaliases ]] && source ~/.zaliases

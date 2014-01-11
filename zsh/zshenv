@@ -1,0 +1,17 @@
+export PATH="/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+export TZ="America/Los_Angeles"
+export HISTFILE=$HOME/.zhistory
+export HISTSIZE=1000
+export SAVEHIST=1000
+export HOSTNAME="`hostname`"
+export PAGER='less'
+export EDITOR='vim'
+export PATH=~/bin:/usr/local/heroku/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin:~/.cabal/bin:~/node_modules/.bin:$PATH
+export GEM_HOME=~/.gem/ruby/2.0.0
+export PYTHONSTARTUP=~/.pyrc
+export NODE_PATH=/bin:/usr/lib/node_modules
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/hp/perl5";
+export PERL_MB_OPT="--install_base /home/hp/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/hp/perl5";
+export PERL5LIB="/home/hp/perl5/lib/perl5:$PERL5LIB";
+export PATH="/home/hp/perl5/bin:$PATH";
