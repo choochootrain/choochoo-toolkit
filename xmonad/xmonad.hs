@@ -90,7 +90,7 @@ myExtraKeys =
       )
 
     -- toggle xmobar
-    , ((mod .|. shift, xK_b),
+    , ((mod, xK_b),
         sendMessage ToggleStruts
       )
 
