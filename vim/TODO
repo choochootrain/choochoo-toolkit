@@ -3,3 +3,4 @@
 [ ] add option to download vundle
 [ ] implement recursive .vim.custom search
 [ ] visible trailing whitespace
+[ ] add local leader keybindings
