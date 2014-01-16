@@ -1,6 +1,4 @@
 [ ] add centerim
-[ ] clean up zsh
-[ ] move user config from zshrc to .env
 [ ] add tmux/byobu
 [ ] add mplayer
 [ ] use yeganesh wrapper for dmenu
