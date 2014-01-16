@@ -1,40 +1,29 @@
-######################################################################
-#           jdong's zshrc file v0.2.1 , based on:
-#		      mako's zshrc file, v0.1
-#
-#
-######################################################################
-
 # add personal config stuff
 [[ -f ~/.zshenv ]] && source ~/.zshenv
 [[ -f ~/.zaliases ]] && source ~/.zaliases
 [[ -f ~/.zprivate ]] && source ~/.zprivate
 
 # next lets set some enviromental/shell pref stuff up
-# setopt NOHUP
+#setopt NOHUP
 #setopt NOTIFY
 #setopt NO_FLOW_CONTROL
 setopt INC_APPEND_HISTORY SHARE_HISTORY
 setopt APPEND_HISTORY
-# setopt AUTO_LIST		# these two should be turned off
+# setopt AUTO_LIST
 # setopt AUTO_REMOVE_SLASH
-# setopt AUTO_RESUME		# tries to resume command of same name
-unsetopt BG_NICE		# do NOT nice bg commands
-setopt CORRECT			# command CORRECTION
-setopt EXTENDED_HISTORY		# puts timestamps in the history
-# setopt HASH_CMDS		# turns on hashing
-#
+# setopt AUTO_RESUME
+unsetopt BG_NICE
+setopt CORRECT
+setopt EXTENDED_HISTORY
+# setopt HASH_CMDS
 setopt MENUCOMPLETE
 setopt ALL_EXPORT
-setopt RM_STAR_WAIT             #10 second wait before huge deletes
-
-
-# Set/unset  shell options
-setopt   notify globdots correct pushdtohome cdablevars autolist
-setopt   correctall autocd recexact longlistjobs
-setopt   autoresume histignoredups pushdsilent
-setopt   autopushd pushdminus extendedglob rcquotes mailwarning
-setopt   extendedglob
+setopt RM_STAR_WAIT
+setopt notify globdots correct pushdtohome cdablevars autolist
+setopt correctall autocd recexact longlistjobs
+setopt autoresume histignoredups pushdsilent
+setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt extendedglob
 unsetopt bgnice autoparamslash
 
 # Autoload zsh modules when they are referenced
@@ -62,7 +51,6 @@ function precmd()
     PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
     local _git _branch
 
-    # This call requires the "findup" script
     _git=`$HOME/bin/./findup .git`
 
     if test -n "$_git"; then
@@ -71,12 +59,6 @@ function precmd()
     fi
 
     PS1="$PS1%(!.#.$) "
-
-    # Alternative solution, from Mike Arthur: something like:
-    # BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null); PROMPT="$PROMPT (${BRANCH_REFS#refs/heads/})"
-
-    # Add final character after the optional git branch (usually # or >)
-    #export PROMPT="$PROMPT$"
 }
 
 eval `dircolors ~/.dir_colors` > /dev/null
@@ -97,6 +79,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 autoload -U compinit
 compinit
+
 bindkey "^?" backward-delete-char
 bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
@@ -172,7 +155,8 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs avahi-autoipd\
         avahi backup messagebus beagleindex debian-tor dhcp dnsmasq fetchmail\
         firebird gnats haldaemon hplip irc klog list man cupsys postfix\
-        proxy syslog www-data mldonkey sys snort
+        proxy syslog www-data mldonkey sys snort bitlbee
+
 # SSH Completion
 zstyle ':completion:*:scp:*' tag-order \
    files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
