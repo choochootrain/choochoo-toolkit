@@ -18,3 +18,5 @@ set session_restored true
 set developer_extras true
 
 script ~/.config/jumanji/scripts/hints.js
+
+set single_instance false
