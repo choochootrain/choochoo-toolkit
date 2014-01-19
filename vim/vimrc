@@ -32,6 +32,8 @@ set nolazyredraw
 set title
 " automatically reload files on external change
 set autoread
+" allow a metric shittonne of buffers to be open at once
+set tabpagemax=1000
 
 "------------------------------------------------------------------------------
 " use the damn hjkl keys
