@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
+import XMonad.Hooks.SetWMName
 
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
@@ -23,12 +24,15 @@ main = do
         , layoutHook         = myLayout
         , manageHook         = myManageHook
         , handleEventHook    = handleEventHook defaultConfig <+> fullscreenEventHook
-        , logHook            = dynamicLogWithPP $ xmobarPP
-                                                  { ppTitle           = const ""
-                                                  , ppLayout          = xmobarColor myFocusedBorderColor "" . myLayoutString
-                                                  , ppSep             = " | "
-                                                  , ppOutput          = hPutStrLn h
+        , logHook            = composeAll
+                                [ dynamicLogWithPP $ xmobarPP
+                                                  { ppTitle  = const ""
+                                                  , ppLayout = xmobarColor myFocusedBorderColor "" . myLayoutString
+                                                  , ppSep    = " | "
+                                                  , ppOutput = hPutStrLn h
                                                   }
+                                , setWMName "LG3D"
+                                ]
         } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
 
 -- Use alt key as mod
