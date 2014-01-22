@@ -4,3 +4,4 @@ add TagWindows keybindings
 add IndependentScreens config for workspaces
 add urgency hint support to pp output
 add fullscreen workspace changing: https://bbs.archlinux.org/viewtopic.php?pid=744577
+refactor script locations
