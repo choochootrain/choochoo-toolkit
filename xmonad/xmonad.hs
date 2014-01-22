@@ -137,6 +137,16 @@ myExtraKeys =
     , ((mod .|. shift, xK_b),
         safeSpawn "/home/hp/.fehbg" []
       )
+
+    -- turn external monitor on
+    , ((mod, xK_m),
+        safeSpawn "/home/hp/bin/monitor.sh" ["vga"]
+      )
+
+    -- turn external monitor off
+    , ((mod .|. shift, xK_m),
+        safeSpawn "/home/hp/bin/monitor.sh" ["off"]
+      )
     ] where mod            = myModMask
             shift          = shiftMask
             myBarColor     = "#0f0f0f"
