@@ -5,3 +5,5 @@ add IndependentScreens config for workspaces
 add urgency hint support to pp output
 add fullscreen workspace changing: https://bbs.archlinux.org/viewtopic.php?pid=744577
 refactor script locations
+replace dmenu with shell prompt
+go through http://braincrater.wordpress.com/2008/11/02/pimp-your-xmonad-1-status-bars/
