@@ -86,7 +86,7 @@ set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
 " make deleting useful
 set backspace=indent,eol,start
 " highlight conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+match ErrorMsg '^\(<\||\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "------------------------------------------------------------------------------
 " add line at 80 characters
