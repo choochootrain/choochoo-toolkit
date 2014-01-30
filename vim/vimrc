@@ -251,6 +251,13 @@ Bundle 'amix/vim-zenroom2'
 nnoremap <silent> <leader>V :Goyo<CR>
 
 "------------------------------------------------------------------------------
+" only use if ag is available
+if executable('ag')
+  Bundle 'rking/ag.vim'
+  let g:ackprg = 'ag --nogroup --column'
+endif
+
+"------------------------------------------------------------------------------
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-bufferline'
 Bundle 'mhinz/vim-startify'
@@ -266,4 +273,3 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'spolu/dwm.vim'
-Bundle 'rking/ag.vim'
