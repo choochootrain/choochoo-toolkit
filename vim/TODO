@@ -4,3 +4,4 @@
 [ ] implement recursive .vim.custom search
 [ ] visible trailing whitespace
 [ ] add local leader keybindings
+[ ] ignore node_modules from ctrlp
