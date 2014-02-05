@@ -7,6 +7,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Hooks.SetWMName
+import XMonad.Actions.PhysicalScreens
 
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
@@ -69,6 +70,11 @@ myUnusedKeys =
 
     -- gmrun
     , (mod .|. shift, xK_p)
+
+    -- remove screen keybindings
+    , (mod, xK_w)
+    , (mod, xK_e)
+    , (mod, xK_r)
     ] where mod   = myModMask
             shift = shiftMask
 
@@ -147,10 +153,20 @@ myExtraKeys =
     , ((mod .|. shift, xK_m),
         safeSpawn "/home/hp/bin/monitor.sh" ["off"]
       )
-    ] where mod            = myModMask
-            shift          = shiftMask
-            myBarColor     = "#0f0f0f"
-            myBarFontColor = "#839496"
+    ]
+
+    ++
+
+    [
+      ((mod .|. mask, key), f sc)
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        , (f, mask) <- [(viewScreen, 0), (sendToScreen, shift)]
+    ]
+
+    where mod            = myModMask
+          shift          = shiftMask
+          myBarColor     = "#0f0f0f"
+          myBarFontColor = "#839496"
 
 -- Show spectrwm layout symbols
 myLayoutString x = case x of
