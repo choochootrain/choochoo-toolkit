@@ -8,6 +8,8 @@ import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.PhysicalScreens
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
@@ -92,6 +94,11 @@ myExtraKeys =
           , "-sf", myBarColor
           , "-p", ">"
           ]
+      )
+
+    -- launch shell prompt
+    , ((mod, xK_o),
+        shellPrompt defaultXPConfig
       )
 
     -- lock screen
