@@ -41,11 +41,9 @@ main = do
 -- Use alt key as mod
 myModMask            = mod1Mask
 
--- Border colors for unfocused and focused windows, respectively.
+-- Xmobar configuration values and color
 myNormalBorderColor  = "#888888"
 myFocusedBorderColor = "#3388ff"
-
--- Xmobar configuration values
 myBarColor           = "#0f0f0f"
 myBarFontColor       = "#839496"
 myBarHeight          = 15
