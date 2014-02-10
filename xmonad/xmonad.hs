@@ -45,6 +45,11 @@ myModMask            = mod1Mask
 myNormalBorderColor  = "#888888"
 myFocusedBorderColor = "#3388ff"
 
+-- Xmobar configuration values
+myBarColor           = "#0f0f0f"
+myBarFontColor       = "#839496"
+myBarHeight          = 15
+
 -- Be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
 -- defaults, as xmonad preserves your old layout settings by default.
@@ -82,23 +87,9 @@ myUnusedKeys =
 
 myExtraKeys =
     [
-    -- launch dmenu with pretty params
-      ((mod, xK_p),
-        safeSpawn "dmenu_run"
-          [ "-h", "15"
-          , "-x", "80"
-          , "-w", "500"
-          , "-nb", myBarColor
-          , "-nf", myBarFontColor
-          , "-sb", myFocusedBorderColor
-          , "-sf", myBarColor
-          , "-p", ">"
-          ]
-      )
-
     -- launch shell prompt
-    , ((mod, xK_o),
-        shellPrompt defaultXPConfig
+      ((mod, xK_p),
+        shellPrompt dmenuXPConfig
       )
 
     -- lock screen
@@ -172,8 +163,6 @@ myExtraKeys =
 
     where mod            = myModMask
           shift          = shiftMask
-          myBarColor     = "#0f0f0f"
-          myBarFontColor = "#839496"
 
 -- Show spectrwm layout symbols
 myLayoutString x = case x of
@@ -181,3 +170,14 @@ myLayoutString x = case x of
               "Mirror Tall" -> "[-]"
               "Full"        -> "[ ]"
               _             -> x
+
+-- Use dmenu-style shell prompt
+dmenuXPConfig = defaultXPConfig
+                { bgColor           = myBarColor
+                , fgColor           = myBarFontColor
+                , fgHLight          = myBarColor
+                , bgHLight          = myFocusedBorderColor
+                , promptBorderWidth = 0
+                , position          = Top
+                , height            = myBarHeight
+                }
