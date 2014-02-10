@@ -1,45 +1,40 @@
 import XMonad
+import XMonad.Actions.PhysicalScreens
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
-import XMonad.Layout.NoBorders
-import XMonad.Util.Run
-import XMonad.Util.EZConfig
 import XMonad.Hooks.SetWMName
-import XMonad.Actions.PhysicalScreens
+import XMonad.Layout.NoBorders
 import XMonad.Prompt
 import XMonad.Prompt.Shell
+import XMonad.Util.Run
+import XMonad.Util.EZConfig
 
-import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
-import System.IO
+import Graphics.X11.ExtraTypes.XF86
 import System.Exit
+import System.IO
 
 main :: IO ()
 main = do
-    h <- spawnPipe "xmobar"
-    xmonad $ ewmh defaultConfig
-        { terminal           = "xterm"
-        , modMask            = myModMask
-        , normalBorderColor  = myNormalBorderColor
-        , focusedBorderColor = myFocusedBorderColor
-        , layoutHook         = myLayout
-        , manageHook         = myManageHook
-        , handleEventHook    = handleEventHook defaultConfig <+> fullscreenEventHook
-        , logHook            = composeAll
-                                [ dynamicLogWithPP $ xmobarPP
-                                                  { ppTitle  = const ""
-                                                  , ppLayout = xmobarColor myFocusedBorderColor "" . myLayoutString
-                                                  , ppSep    = " | "
-                                                  , ppOutput = hPutStrLn h
-                                                  }
-                                , setWMName "LG3D"
-                                ]
-        } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
+  h <- spawnPipe "xmobar"
+  xmonad $ ewmh defaultConfig
+    { terminal           = myTerminal
+    , modMask            = myModMask
+    , normalBorderColor  = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
+    , layoutHook         = myLayout
+    , manageHook         = myManageHook
+    , handleEventHook    = myEventHook
+    , logHook            = myLogHooks h
+    } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
 
 -- Use alt key as mod
 myModMask            = mod1Mask
+
+-- Use xterm as terminal
+myTerminal           = "xterm"
 
 -- Xmobar configuration values and color
 myNormalBorderColor  = "#888888"
@@ -67,6 +62,21 @@ myLayout = avoidStruts . smartBorders $ tiled ||| Mirror tiled ||| Full
 
 -- Behave nicely with fullscreened windows
 myManageHook = isFullscreen --> doFullFloat
+myEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
+
+
+myLogHooks = \h -> composeAll
+              [ myXmobarPP h
+              , setWMName "LG3D"
+              ]
+
+myXmobarPP = \h -> dynamicLogWithPP $ xmobarPP
+               { ppTitle  = const ""
+               , ppLayout = xmobarColor myFocusedBorderColor "" . myLayoutString
+               , ppSep    = " | "
+               , ppOutput = hPutStrLn h
+               }
+
 
 myUnusedKeys =
     [
