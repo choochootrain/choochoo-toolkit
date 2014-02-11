@@ -127,12 +127,12 @@ myExtraKeys =
 
     -- increase backlight brightness
     , ((0, xF86XK_MonBrightnessUp),
-        safeSpawn "xbacklight" ["-inc", "15"]
+        safeSpawn "xbacklight" ["-inc", "5"]
       )
 
     -- decrease backlight brightness
     , ((0, xF86XK_MonBrightnessDown),
-        safeSpawn "xbacklight" ["-dec", "15"]
+        safeSpawn "xbacklight" ["-dec", "5"]
       )
 
     -- take a screenshot of entire display
