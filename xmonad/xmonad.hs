@@ -5,6 +5,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.NoBorders
 import XMonad.Prompt
 import XMonad.Prompt.Shell
@@ -19,7 +20,7 @@ import System.IO
 main :: IO ()
 main = do
   h <- spawnPipe "xmobar"
-  xmonad $ ewmh defaultConfig
+  xmonad $ ewmh $ withUrgencyHook NoUrgencyHook $ defaultConfig
     { terminal           = myTerminal
     , modMask            = myModMask
     , normalBorderColor  = myNormalBorderColor
@@ -73,6 +74,7 @@ myLogHooks = \h -> composeAll
 myXmobarPP = \h -> dynamicLogWithPP $ xmobarPP
                { ppTitle  = const ""
                , ppLayout = xmobarColor myFocusedBorderColor "" . myLayoutString
+               , ppUrgent = xmobarColor myNormalBorderColor myFocusedBorderColor
                , ppSep    = " | "
                , ppOutput = hPutStrLn h
                }

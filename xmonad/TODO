@@ -2,7 +2,5 @@ add 10+ workspace support with tags
 add cycleWS keybindings for multihead
 add TagWindows keybindings
 add IndependentScreens config for workspaces
-add urgency hint support to pp output
 add fullscreen workspace changing: https://bbs.archlinux.org/viewtopic.php?pid=744577
 refactor script locations
-go through http://braincrater.wordpress.com/2008/11/02/pimp-your-xmonad-1-status-bars/
