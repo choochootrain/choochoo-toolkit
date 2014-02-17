@@ -4,6 +4,7 @@ alias ls='ls --color=auto '
 alias vi="vim"
 alias xclip="xclip -sel c"
 alias adb="env -u LD_PRELOAD adb"
+alias mplayer="mplayer -msgcolor"
 alias maven="command mvn" # colored maven
 color_maven() {
   maven $* | sed -e 's/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/[1;32mTests run: \1[0m, Failures: [1;31m\2[0m, Errors: [1;33m\3[0m, Skipped: [1;34m\4[0m/g' \
