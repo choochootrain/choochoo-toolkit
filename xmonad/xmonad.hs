@@ -149,7 +149,7 @@ myExtraKeys =
 
     -- rotate background
     , ((mod .|. shift, xK_b),
-        safeSpawn "/home/hp/.fehbg" []
+        safeSpawn "/home/hp/bin/fehbg" []
       )
 
     -- turn external monitor on

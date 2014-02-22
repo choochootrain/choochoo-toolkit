@@ -1,2 +1,2 @@
 #!/bin/sh
-ln -sf `pwd`/fehbg ~/.fehbg
+ln -sf `pwd`/fehbg ~/bin/fehbg
