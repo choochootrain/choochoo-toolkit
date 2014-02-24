@@ -27,7 +27,7 @@ In progress
 [.] monitors
 [X]   switch to external monitor
 [X]   multihead
-[ ]   auto detect
+[X]   auto detect (scripted)
 [.] arduino
 [ ]   run not as root
 [X]   installed binaries
