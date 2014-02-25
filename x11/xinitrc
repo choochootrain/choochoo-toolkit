@@ -15,7 +15,7 @@ xsetroot -cursor_name left_ptr
 xrdb -merge ~/.Xresources
 
 # set wallpaper
-sh ~/.fehbg
+sh ~/bin/fehbg
 
 # hide the mouse
 hhp &
