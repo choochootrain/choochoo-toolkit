@@ -8,8 +8,22 @@
 [branch]
 	autosetuprebase = always
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	d = difftool
+	a  = add
+	br = branch
+	ch = checkout
+	cl = clone
+	c  = commit
+	d  = diff
+	dt = difftool
+	g  = grep
+	l  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	pl = pull
+	ps = push
+	rb = rebase
+	rs = reset
+	sh = show
+	s  = status
+	st = stash
 [push]
 	default = simple
 [core]

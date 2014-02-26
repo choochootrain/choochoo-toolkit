@@ -25,16 +25,6 @@ alias psgrep='ps aux | grep'
 alias dmesg="dmesg -deH"
 
 #git aliases
-alias gs='git status'
-alias gd='git diff'
-alias gdc='gd --cached'
-alias ga='git add'
-alias gr='git rm'
-alias gc='git commit'
-alias gps='git push'
-alias gpuom='gps origin master'
-alias gpl='git pull'
-alias gplom='gpl origin master'
-alias gl='git lg'
+alias g='git '
 alias cdg="cd \`findup .git\`; cd .."
 alias gitc="git log | grep Author | sed 's/Author: //' | sort -r | uniq -c | sort -k +1n"
