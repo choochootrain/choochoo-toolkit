@@ -266,6 +266,10 @@ if executable('ag')
 endif
 
 "------------------------------------------------------------------------------
+Bundle 'kshenoy/vim-signature'
+noremap <leader>m :SignatureToggle<CR>
+
+"------------------------------------------------------------------------------
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-bufferline'
 Bundle 'mhinz/vim-startify'
