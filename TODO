@@ -22,12 +22,6 @@ Not started
 
 In progress
 -----------
-[.] git hook to make commits nice
-[.] organize scripts n dotfiles
-[.] monitors
-[X]   switch to external monitor
-[X]   multihead
-[X]   auto detect (scripted)
 [.] arduino
 [ ]   run not as root
 [X]   installed binaries
@@ -48,8 +42,7 @@ In progress
 [X]   supertab
 [X]   vundle
 [X]   caps lock to esc
-[ ]   sparkup
-[ ]   signature
+[X]   signature
 [X]   zenroom
 [ ]   expand-region
 [ ]   yankring
@@ -138,5 +131,11 @@ In progress
 [X] git
 [X]   github key
 [X]   bitbucket key
+[X]   git hook to make commits nice
 [X] password management
 [X]   pass
+[X] organize scripts n dotfiles
+[X] monitors
+[X]   switch to external monitor
+[X]   multihead
+[X]   auto detect (scripted)
