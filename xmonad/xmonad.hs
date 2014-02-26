@@ -31,6 +31,9 @@ main = do
     , logHook            = myLogHooks h
     } `removeKeys` myUnusedKeys `additionalKeys` myExtraKeys
 
+-- Use user's bin directory for scripts
+myScriptDir          = "/home/hp/bin/"
+
 -- Use alt key as mod
 myModMask            = mod1Mask
 
@@ -43,6 +46,8 @@ myFocusedBorderColor = "#3388ff"
 myBarColor           = "#0f0f0f"
 myBarFontColor       = "#839496"
 myBarHeight          = 15
+
+
 
 -- Be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
@@ -149,17 +154,17 @@ myExtraKeys =
 
     -- rotate background
     , ((mod .|. shift, xK_b),
-        safeSpawn "/home/hp/bin/fehbg" []
+        safeSpawnScript "fehbg" []
       )
 
     -- turn external monitor on
     , ((mod, xK_m),
-        safeSpawn "/home/hp/bin/monitor.sh" ["vga"]
+        safeSpawnScript "monitor.sh" ["vga"]
       )
 
     -- turn external monitor off
     , ((mod .|. shift, xK_m),
-        safeSpawn "/home/hp/bin/monitor.sh" ["off"]
+        safeSpawnScript "monitor.sh" ["off"]
       )
     ]
 
@@ -171,8 +176,9 @@ myExtraKeys =
         , (f, mask) <- [(viewScreen, 0), (sendToScreen, shift)]
     ]
 
-    where mod            = myModMask
-          shift          = shiftMask
+    where mod                       = myModMask
+          shift                     = shiftMask
+          safeSpawnScript name args = safeSpawn (myScriptDir ++ name) args
 
 -- Show spectrwm layout symbols
 myLayoutString x = case x of
