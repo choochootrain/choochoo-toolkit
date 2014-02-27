@@ -1,6 +1,6 @@
 alias man='LC_ALL=C LANG=C man'
 alias ll='ls -al'
-alias ls='ls --color=auto '
+alias ls='ls -h --group-directories-first --color=auto -I "*.pyc" -I "*.hi" -I "*.o"'
 alias vi="vim"
 alias xclip="xclip -sel c"
 alias adb="env -u LD_PRELOAD adb"
