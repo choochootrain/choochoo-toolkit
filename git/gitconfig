@@ -9,6 +9,7 @@
 	autosetuprebase = always
 [alias]
 	a  = add
+	bl = blame
 	br = branch
 	ch = checkout
 	cl = clone
