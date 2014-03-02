@@ -1,3 +1,7 @@
+Not started
+-----------
+
+[ ] add tarsnap backups
 [ ] add uzbl/dwb/conkeror browser
 [ ] add private info file and templatize config files
 [ ] add centerim
@@ -6,17 +10,12 @@
 [ ] fix haskell package setup
 [ ] add autoenv to zsh
 [ ] review square/maximum-awesome configs
-
-Not started
------------
-[ ] duplicity/duply backups
 [ ] Todoist console app
 [ ] use cpu govnah
 [ ] better battery life
 [ ] install bastille
 [ ] touchegg
-/*[ ] splash screen*/
-/*[ ]   automake1.10 error*/
+[ ] splash screen
 [ ] mpd
 [ ] fish shell
 
