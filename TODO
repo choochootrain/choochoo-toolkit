@@ -2,7 +2,7 @@ Not started
 -----------
 
 [ ] add mopidy
-[ ] add tarsnap backups
+
 [ ] add uzbl/dwb/conkeror browser
 [ ] add private info file and templatize config files
 [ ] add centerim
@@ -139,3 +139,5 @@ In progress
 [X]   switch to external monitor
 [X]   multihead
 [X]   auto detect (scripted)
+[X] backups
+[X]   add tarsnap backups
