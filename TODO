@@ -1,6 +1,7 @@
 Not started
 -----------
 
+[ ] add mopidy
 [ ] add tarsnap backups
 [ ] add uzbl/dwb/conkeror browser
 [ ] add private info file and templatize config files
