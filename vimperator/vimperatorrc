@@ -1,0 +1,40 @@
+set runtimepath=~/.vimperator
+set defsearch=google
+set toolbars=nobookmarks,nomenu,nonavigation,tabs
+
+" show search engine results, history, and search engine suggestions
+set complete=slS
+
+set history=1000
+
+" open all items in new tabs
+set newtab=all
+
+" open popups in tabs
+set popups=tab
+
+" show previous search matches
+set hlsearch
+
+" smartly ignore case in search patterns
+set ignorecase
+set smartcase
+
+" show search matches as you type
+set incsearch
+
+" stay in normal mode after loading a page
+set focuscontent
+
+" shoew visual errors
+set visualbell
+
+" prefer home row keys for hinting
+set hintchars=HJKLASDFGZXCVBNMQWERTYUIOP
+
+let mapleader = ","
+noremap <leader>t :sidebar todoist<CR>
+noremap <leader>T :sbclose
+
+noremap <leader>c :dialog console<CR>
+noremap <leader>s :source ~/.vimperatorrc<CR>
