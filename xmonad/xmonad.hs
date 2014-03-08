@@ -107,6 +107,11 @@ myExtraKeys =
         shellPrompt dmenuXPConfig
       )
 
+    -- launch firefox
+    , ((mod, xK_f),
+        safeSpawn "firefox" []
+      )
+
     -- lock screen
     , ((mod .|. shift, xK_l),
         safeSpawn "slimlock" []
