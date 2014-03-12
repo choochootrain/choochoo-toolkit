@@ -34,7 +34,7 @@ set hintchars=HJKLASDFGZXCVBNMQWERTYUIOP
 
 let mapleader = ","
 noremap <leader>t :sidebar todoist<CR>
-noremap <leader>T :sbclose
+noremap <leader>T :sbclose<CR>
 
 noremap <leader>c :dialog console<CR>
 noremap <leader>s :source ~/.vimperatorrc<CR>
