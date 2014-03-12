@@ -30,7 +30,7 @@ set focuscontent
 set visualbell
 
 " prefer home row keys for hinting
-set hintchars=HJKLASDFGZXCVBNMQWERTYUIOP
+set hintchars=hjklasdfgqweruiopzxcvnmbty
 
 let mapleader = ","
 noremap <leader>t :sidebar todoist<CR>
