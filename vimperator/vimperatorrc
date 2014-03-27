@@ -1,5 +1,5 @@
 set runtimepath=~/.vimperator
-set defsearch=google
+set defsearch=duckduckgo
 set toolbars=nobookmarks,nomenu,nonavigation,tabs
 
 " show search engine results, history, and search engine suggestions
