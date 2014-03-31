@@ -1,7 +1,5 @@
 Not started
 -----------
-
-[ ] add redshift config
 [ ] add docker setup
 [ ] add calcurse w google sync
 [ ] add mopidy
@@ -104,7 +102,6 @@ In progress
 [X]   chat
 [X]     centerim
 [X] google talk plugin
-[X] f.lux
 [X] ruby
 [X]   gem
 [X]   rails
@@ -143,3 +140,4 @@ In progress
 [X]   auto detect (scripted)
 [X] backups
 [X]   add tarsnap backups
+[x] redshift (f.lux)

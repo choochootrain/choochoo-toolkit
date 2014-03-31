@@ -23,5 +23,8 @@ hhp &
 # auto lock screen after inactivity or sleep
 xautolock -time 10 -lockaftersleep -locker slimlock &
 
+# enable redshift
+redshift &
+
 #start wm
 exec xmonad
