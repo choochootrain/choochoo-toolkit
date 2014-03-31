@@ -1,2 +1,3 @@
 rewrite plugins to use dynamic icons
 xmonad window status
+add wifi on/off status
