@@ -107,6 +107,11 @@ myExtraKeys =
         shellPrompt dmenuXPConfig
       )
 
+    -- launch network prompt
+    , ((mod, xK_n),
+        unsafePrompt "xterm -e sudo netcfg " dmenuXPConfig
+      )
+
     -- launch firefox
     , ((mod, xK_f),
         safeSpawn "firefox" []
