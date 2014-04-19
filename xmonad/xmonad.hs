@@ -12,6 +12,7 @@ import XMonad.Prompt.Shell
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 
+import Data.List
 import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
@@ -109,7 +110,7 @@ myExtraKeys =
 
     -- launch network prompt
     , ((mod, xK_n),
-        unsafePrompt "xterm -e sudo netcfg " dmenuXPConfig
+        networkPrompt "/etc/network.d" "wlan0-" dmenuXPConfig
       )
 
     -- launch firefox
@@ -207,3 +208,25 @@ dmenuXPConfig = defaultXPConfig
                 , position          = Top
                 , height            = myBarHeight
                 }
+
+data Network = Network
+
+instance XPrompt Network where
+  showXPrompt Network = "Connect: "
+
+networkPrompt dir prefix c = mkXPrompt Network c (getNetworkComplFromDirIgnoring dir prefix) connect
+  where
+    getNetworkComplFromDirIgnoring :: String -> String -> String -> IO [String]
+    getNetworkComplFromDirIgnoring dir prefix s = do
+      networks <- getNetworks dir prefix
+      return $ [ network | network <- networks, isPrefixOf s network]
+    getNetworks :: String -> String -> IO [String]
+    getNetworks dir prefix = do
+      networkFiles <- fmap lines $ runProcessWithInput "bash" [] ("ls " ++ dir)
+      return $ map (removePrefix prefix) $ filter (isPrefixOf prefix) networkFiles
+    removePrefix :: String -> String -> String
+    removePrefix prefix s
+      | length s < length prefix || take (length prefix) s /= prefix = s
+      | otherwise                                                    = drop (length prefix) s
+    connect :: String -> X()
+    connect network = safeSpawn "xterm" ["-e", "sudo", "netcfg", prefix++network]
