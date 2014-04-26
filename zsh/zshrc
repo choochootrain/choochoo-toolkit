@@ -3,63 +3,44 @@
 [[ -f ~/.zaliases ]] && source ~/.zaliases
 [[ -f ~/.zprivate ]] && source ~/.zprivate
 
-# next lets set some enviromental/shell pref stuff up
-#setopt NOHUP
-#setopt NOTIFY
-#setopt NO_FLOW_CONTROL
-setopt INC_APPEND_HISTORY SHARE_HISTORY
-setopt APPEND_HISTORY
-# setopt AUTO_LIST
-# setopt AUTO_REMOVE_SLASH
-# setopt AUTO_RESUME
-unsetopt BG_NICE
-setopt CORRECT
-setopt EXTENDED_HISTORY
-# setopt HASH_CMDS
-setopt MENUCOMPLETE
-setopt ALL_EXPORT
-setopt RM_STAR_WAIT
-setopt notify globdots correct pushdtohome cdablevars autolist
-setopt correctall autocd recexact longlistjobs
-setopt autoresume histignoredups pushdsilent
-setopt autopushd pushdminus extendedglob rcquotes mailwarning
-setopt extendedglob
-unsetopt bgnice autoparamslash
+# directory settings
+setopt AUTO_PUSHD # automatically push old directory onto stack
+setopt CHASE_LINKS # resolve symbolic links
+setopt PUSHD_IGNORE_DUPS # don't push duplicates to stack
+setopt PUSHD_TO_HOME # pushd with no args is equivalent to pushd $HOME
 
-# Autoload zsh modules when they are referenced
-zmodload -a zsh/stat stat
-zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
+# completion settings
+#TODO
 
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-  colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-  (( count = $count + 1 ))
-done
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
+# expansion and globbing settings
+#TODO
 
-# This zsh function is called whenever changing directories and
-# shows the current git branch in the prompt
-function precmd()
-{
-    # Adjust this to your current preferred prompt 
-    PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
-    local _git _branch
+# history settings
+setopt INC_APPEND_HISTORY SHARE_HISTORY # dynamic shared history among zsh sessions
+setopt EXTENDED_HISTORY # save timestamps in history
+setopt HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS # discard old entries which are duplicates
+setopt HIST_IGNORE_SPACE # ignore commands that begin with a space
+setopt HIST_REDUCE_BLANKS # clean up whitespace in history
+setopt HIST_VERIFY # load history entry into buffer before running
 
-    _git=`$HOME/bin/./findup .git`
+# initialization settings
+#TODO
 
-    if test -n "$_git"; then
-        _branch=`sed -e 's,.*/,,' $_git/HEAD`
-        PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR"
-    fi
+# I/O settings
+setopt RM_STAR_WAIT # wait 10 seconds before confirming rm *
+setopt CLOBBER # allow > to truncate existing files and >> to create files
+setopt INTERACTIVE_COMMENTS # because i can
+setopt HASH_CMDS # hash the locations of commands after first execution
+setopt HASH_DIRS # hash all directories in path to command
 
-    PS1="$PS1%(!.#.$) "
-}
+# job control settings
+setopt MONITOR # enable job control
+setopt NOTIFY # report job status immediately
+unsetopt BG_NICE # don't run background jobs at lower priority
+setopt LONG_LIST_JOBS # show jobs list in long format
+setopt AUTO_CONTINUE # disowned jobs are sent a CONT signal
+setopt CHECK_JOBS # check background jobs before exiting
+setopt HUP # send hup signal to jobs on exit
 
 eval `dircolors ~/.dir_colors` > /dev/null
 export TERM=xterm-256color
