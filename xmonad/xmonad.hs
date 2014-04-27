@@ -118,6 +118,11 @@ myExtraKeys =
         networkPrompt "/etc/network.d" "wlan0-" dmenuXPConfig
       )
 
+    -- launch password prompt
+    , ((mod .|. shift, xK_p),
+        passwordPrompt "/home/hp/.password-store/" ".gpg" dmenuXPConfig
+      )
+
     -- launch firefox
     , ((mod, xK_f),
         safeSpawn "firefox" []
@@ -235,3 +240,22 @@ networkPrompt dir prefix c = mkXPrompt Network c (getNetworkComplFromDirIgnoring
       | otherwise                                                    = drop (length prefix) s
     connect :: String -> X()
     connect network = safeSpawn "xterm" ["-e", "sudo", "netcfg", prefix++network]
+
+
+data Password= Password
+
+instance XPrompt Password where
+  showXPrompt Password = "Password: "
+
+passwordPrompt dir suffix c = mkXPrompt Password c (getPasswordComplFromDirSelecting dir suffix) copyPassword
+  where
+    getPasswordComplFromDirSelecting :: String -> String -> String -> IO [String]
+    getPasswordComplFromDirSelecting dir suffix s = do
+      passwords <- getPasswords dir suffix
+      return $ [ password | password <- passwords, isPrefixOf s password]
+    getPasswords :: String -> String -> IO [String]
+    getPasswords dir suffix = do
+      passwordFiles <- fmap lines $ runProcessWithInput "bash" [] ("find " ++ dir ++ " -type f | grep -v .gpg-id | grep " ++ suffix)
+      return $ map ((\x -> take (length x - length suffix) x) . (drop $ length dir)) passwordFiles
+    copyPassword :: String -> X()
+    copyPassword pass = safeSpawn "pass" ["-c", pass]

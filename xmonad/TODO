@@ -2,6 +2,6 @@ add 10+ workspace support with tags
 add cycleWS keybindings for multihead
 add TagWindows keybindings
 add IndependentScreens config for workspaces
-add pass clipboard integration
 refactor network prompt into xmonad-contrib
+refactor password prompt into xmonad-contrib
 add xmonad-extras and redo volume control
