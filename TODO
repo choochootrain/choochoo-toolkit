@@ -1,5 +1,6 @@
 Not started
 -----------
+[ ] review https://github.com/skwp/dotfiles
 [ ] add docker setup
 [ ] add calcurse w google sync
 [ ] add mopidy
@@ -141,3 +142,4 @@ In progress
 [X] backups
 [X]   add tarsnap backups
 [x] redshift (f.lux)
+[x] readline/editline vi bindings
