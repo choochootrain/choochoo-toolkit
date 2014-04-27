@@ -214,14 +214,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "------------------------------------------------------------------------------
-"Bundle 'majutsushi/tagbar'
-"noremap <leader>t :TagbarToggle<CR>
-"" quit when taglist is the last open window
-"let Tlist_Exit_OnlyWindow=1
-"" put focus on the taglist window when it opens
-"let Tlist_GainFocus_On_ToggleOpen=1
-
-"------------------------------------------------------------------------------
 Bundle 'bling/vim-airline'
 " use fancy symbols
 let g:airline_powerline_fonts = 1
