@@ -18,6 +18,8 @@ import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import System.IO
 
+import qualified XMonad.StackSet as W
+
 main :: IO ()
 main = do
   h <- spawnPipe "xmobar"
@@ -68,7 +70,10 @@ myLayout = avoidStruts . smartBorders $ tiled ||| Mirror tiled ||| Full
      delta   = 3/100
 
 -- Behave nicely with fullscreened windows
-myManageHook = isFullscreen --> doFullFloat
+myManageHook = isFullscreen --> myDoFullFloat
+  where
+    myDoFullFloat :: ManageHook
+    myDoFullFloat = doF W.focusDown <+> doFullFloat
 myEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
 
 
