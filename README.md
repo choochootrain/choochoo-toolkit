@@ -3,6 +3,7 @@ ChoochooToolkit
 
 Many parts of this are copied or inspired by the following:
 * [Anders Papitto's config-issue](https://github.com/anderspapitto/config-issue/)
+* [skwp's dotfiles](http://github.com/skwp/dotfiles/)
 
 * [ArchWiki's feh reference](https://wiki.archlinux.org/index.php/feh)
 
