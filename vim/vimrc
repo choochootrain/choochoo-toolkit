@@ -250,11 +250,6 @@ Bundle 'metalelf0/vimt0d0'
 autocmd BufNewFile,BufReadPost *.t0d0,TODO set filetype=vimt0d0
 
 "------------------------------------------------------------------------------
-Bundle 'junegunn/goyo.vim'
-Bundle 'amix/vim-zenroom2'
-nnoremap <silent> <leader>V :Goyo<CR>
-
-"------------------------------------------------------------------------------
 " only use if ag is available
 if executable('ag')
   Bundle 'rking/ag.vim'
