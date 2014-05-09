@@ -37,3 +37,11 @@ Configuration for all the tools I use.
 * vim
 * x11
 * zsh
+
+Installation
+------------
+```bash
+git clone https://github.com/choochootrain/choochoo-toolkit.git ~/.toolkit
+cd ~/.toolkit
+./distribute
+```
