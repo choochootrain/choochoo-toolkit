@@ -10,7 +10,6 @@ Not started
 [ ] add tmux/byobu
 [ ] add mplayer
 [ ] fix haskell package setup
-[ ] add autoenv to zsh
 [ ] review square/maximum-awesome configs
 [ ] Todoist console app
 [ ] use cpu govnah
@@ -53,6 +52,7 @@ In progress
 [X]   installed
 [ ]   customize
 [ ]     steal from oh my zsh
+[X]   autoenv
 [.] auto mount
 [X]   mount windows partition
 [ ]   mount plugged in drives
