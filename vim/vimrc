@@ -190,6 +190,20 @@ vnoremap <Tab> %
 " jump to next conflict marker
 nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 
+" open url in default browser
+function! OpenURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo s:uri
+  if s:uri != ""
+    exec "!xdg-open \"" . s:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+noremap <leader>o :call OpenURL()<CR>
+
+
+
 "##############################################################################
 "#    cursor hacks                                                            #
 "##############################################################################
