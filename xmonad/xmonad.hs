@@ -73,8 +73,8 @@ myLayout = avoidStruts . smartBorders $ tiled ||| Mirror tiled ||| Full
 myManageHook = isFullscreen --> myDoFullFloat
   where
     myDoFullFloat :: ManageHook
-    myDoFullFloat = doF W.focusDown <+> doFullFloat
-myEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
+    myDoFullFloat = doFullFloat
+myEventHook = handleEventHook defaultConfig  <+> fullscreenEventHook
 
 
 myLogHooks = \h -> composeAll
@@ -140,17 +140,17 @@ myExtraKeys =
 
     -- raise volume
     , ((0, xF86XK_AudioRaiseVolume),
-        safeSpawn "amixer" ["set", "Master", "5%+", "unmute"]
+        safeSpawnScript "volume.sh" ["up"]
       )
 
     -- lower volume
     , ((0, xF86XK_AudioLowerVolume),
-        safeSpawn "amixer" ["set", "Master", "5%-", "unmute"]
+        safeSpawnScript "volume.sh" ["down"]
       )
 
-    -- mute volume
+    -- toggle volume
     , ((0, xF86XK_AudioMute),
-        safeSpawn "amixer" ["set", "Master", "toggle"]
+        safeSpawnScript "volume.sh" ["toggle"]
       )
 
     -- increase backlight brightness
