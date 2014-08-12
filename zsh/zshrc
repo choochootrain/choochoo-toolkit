@@ -186,3 +186,9 @@ zstyle '*' single-ignored show
 
 # initialize autoenv
 [[ -f ~/.autoenv ]] && source ~/.autoenv
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+if test -f ~/.rvm/scripts/rvm; then
+  [ "$(type rvm)" = "rvm is a function" ] || source ~/.rvm/scripts/rvm
+fi
