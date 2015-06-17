@@ -1,0 +1,6 @@
+loadplugins '\.(js|penta)$'
+group user
+set defsearch='duckduckgo'
+set hintkeys=asdfhjklqweruiop
+set showtabline=always
+set strictfocus
