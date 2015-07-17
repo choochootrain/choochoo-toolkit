@@ -9,7 +9,7 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -i3 -show run"
+bindsym $mod+d exec "rofi -i3 -show run -sidebar-mode"
 
 # change focus
 bindsym $mod+h focus left
@@ -102,15 +102,27 @@ mode "resize/micro" {
 }
 bindsym $mod+r mode "resize/macro"
 
-mode "output" {
-    bindsym h move container to output left
-    bindsym j move container to output down
-    bindsym k move container to output up
-    bindsym l move container to output right
+mode "output/container" {
+    bindsym h move container to output left;  mode "default"
+    bindsym j move container to output down;  mode "default"
+    bindsym k move container to output up;    mode "default"
+    bindsym l move container to output right; mode "default"
 
     bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym o mode "output/workspace"
 }
-bindsym $mod+o mode "output"
+mode "output/workspace" {
+    bindsym h move workspace to output left;  mode "default"
+    bindsym j move workspace to output down;  mode "default"
+    bindsym k move workspace to output up;    mode "default"
+    bindsym l move workspace to output right; mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym o mode "output/container"
+}
+bindsym $mod+o mode "output/workspace"
 
 mode "pass-through" {
     bindsym $mod+Shift+Escape mode "default"
