@@ -18,6 +18,7 @@
 	dt = difftool
 	g  = grep
 	l  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --abbrev-commit --stat -C --decorate --date=local
 	pl = pull
 	ps = push
 	rb = rebase
