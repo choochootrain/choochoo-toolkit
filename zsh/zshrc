@@ -64,7 +64,7 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 function precmd()
 {
     # Adjust this to your current preferred prompt
-    PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
+    PS1="┌─[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
     local _git _branch
 
     _git=`$HOME/bin/./findup .git`
@@ -74,7 +74,19 @@ function precmd()
         PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR"
     fi
 
-    PS1="$PS1%(!.#.$) "
+    if [ -n "$VIRTUAL_ENV" ]; then
+        if [ -f "$VIRTUAL_ENV/__name__" ]; then
+            local name=`cat $VIRTUAL_ENV/__name__`
+        elif [ `basename $VIRTUAL_ENV` = "__" ]; then
+            local name=$(basename $(dirname $VIRTUAL_ENV))
+        else
+            local name=$(basename $VIRTUAL_ENV)
+        fi
+        PS1="$PS1$PR_WHITE{$name}$PR_NO_COLOR"
+    fi
+
+    PS1="$PS1
+└─%(!.#.$) "
 }
 
 eval `dircolors ~/.dir_colors` > /dev/null
@@ -86,8 +98,6 @@ LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
 LC_CTYPE=C
 
-MUTT_EDITOR=vim
-
 unsetopt ALL_EXPORT
 
 autoload -U edit-command-line
@@ -95,6 +105,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 autoload -U compinit
 compinit
+setopt completealiases
 
 bindkey "^?" backward-delete-char
 bindkey '^[OH' beginning-of-line
@@ -104,6 +115,11 @@ bindkey '^[[6~' down-line-or-history
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+# vi style incremental search
+# bindkey '^R' history-incremental-search-backward
+# bindkey '^S' history-incremental-search-forward
+# bindkey '^P' history-search-backward
+# bindkey '^N' history-search-forward
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
@@ -186,9 +202,3 @@ zstyle '*' single-ignored show
 
 # initialize autoenv
 [[ -f ~/.autoenv ]] && source ~/.autoenv
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-if test -f ~/.rvm/scripts/rvm; then
-  [ "$(type rvm)" = "rvm is a function" ] || source ~/.rvm/scripts/rvm
-fi

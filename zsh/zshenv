@@ -5,12 +5,11 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HOSTNAME="`hostname`"
 export PAGER='less'
+export MANPAGER="/bin/sh -c \"col -bx | vim -c 'set ft=man' -R -M -\""
 export EDITOR='vim'
-export PATH=~/bin:/usr/local/heroku/bin:~/.cabal/bin:~/node_modules/.bin:$PATH
+export ALTERNATE_EDITOR='vim'
 export PYTHONSTARTUP=~/.pyrc
 export NODE_PATH=/bin:/usr/lib/node_modules
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/hp/perl5";
-export PERL_MB_OPT="--install_base /home/hp/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/hp/perl5";
-export PERL5LIB="/home/hp/perl5/lib/perl5:$PERL5LIB";
-export PATH="/home/hp/perl5/bin:$PATH";
+export MANPAGER="/bin/sh -c \"col -bx | vim -c 'set ft=man' -R -M -\""
+export PYTHONSTARTUP=~/.pyrc
+export LESS="-XFR"

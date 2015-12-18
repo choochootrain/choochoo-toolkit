@@ -1,9 +1,8 @@
 alias man='LC_ALL=C LANG=C man'
 alias ll='ls -al'
-alias ls='ls -h --group-directories-first --color=auto -I "*.pyc" -I "*.hi" -I "*.o"'
+alias ls='ls -h --group-directories-first --color=auto'
 alias vi="vim"
 alias xclip="xclip -sel c"
-alias adb="env -u LD_PRELOAD adb"
 alias mplayer="mplayer -msgcolor"
 alias maven="command mvn" # colored maven
 color_maven() {
@@ -19,12 +18,9 @@ color_maven() {
 
 }
 alias mvn=color_maven
-alias pacman="aura"
-alias wifi='sudo wifi-menu'
 alias psgrep='ps aux | grep'
-alias dmesg="dmesg -deH"
-
-#git aliases
-alias g='git '
+alias g='git'
 alias cdg="cd \`findup .git\`; cd .."
 alias gitc="git log | grep Author | sed 's/Author: //' | sort -r | uniq -c | sort -k +1n"
+alias psgrep='ps aux | grep '
+alias src='source ~/.zshrc'
