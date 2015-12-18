@@ -56,8 +56,8 @@ set smarttab
 " use spaces for tab
 set expandtab
 " 2 spaces to tab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 "------------------------------------------------------------------------------
 " keep 5 lines visible below cursor
@@ -123,8 +123,6 @@ endfunction
 filetype plugin indent on
 " syntax highlighting is kinda useful
 syntax on
-" syntax highlighting for arudino files
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
 "------------------------------------------------------------------------------
 " load directory specific files
@@ -164,6 +162,11 @@ nnoremap <leader>w gt<CR>
 " previous tab
 nnoremap <leader>q gT<CR>
 
+" next buffer
+nnoremap <leader>W :bn<CR>
+" previous buffer
+nnoremap <leader>Q :bp<CR>
+
 " toggle fold open/close
 nnoremap <leader>z za
 
@@ -189,6 +192,9 @@ vnoremap <Tab> %
 
 " jump to next conflict marker
 nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+
+" clear trailing whitespace
+map <leader>T :%s/\s\+$//<CR>
 
 " open url in default browser
 function! OpenURL()
@@ -230,20 +236,11 @@ Bundle 'gmarik/vundle'
 "------------------------------------------------------------------------------
 Bundle 'bling/vim-airline'
 " use fancy symbols
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled=1
 
 "------------------------------------------------------------------------------
-Bundle 'altercation/vim-colors-solarized'
-highlight SpecialKey ctermfg=6
-highlight NonText ctermfg=6
-colorscheme solarized
-set background=dark
-" map F5 to toggle palette
-call togglebg#map("<F5>")
-
-"------------------------------------------------------------------------------
-
 Bundle 'airblade/vim-gitgutter'
 noremap <leader>gg :GitGutterToggle<CR>
 " off by default
@@ -259,11 +256,6 @@ noremap <leader>u :GundoToggle<CR>
 let g:gundo_preview_bottom = 1
 
 "------------------------------------------------------------------------------
-Bundle 'metalelf0/vimt0d0'
-" syntax highlighting for todo files
-autocmd BufNewFile,BufReadPost *.t0d0,TODO set filetype=vimt0d0
-
-"------------------------------------------------------------------------------
 " only use if ag is available
 if executable('ag')
   Bundle 'rking/ag.vim'
@@ -271,29 +263,38 @@ if executable('ag')
 endif
 
 "------------------------------------------------------------------------------
-Bundle 'kien/ctrlp.vim'
-
-if executable('ag')
-  " set ctrlp to use ag
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+Bundle 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeIgnore=['\~$', '__pycache__', '*.pyc$']
 
 "------------------------------------------------------------------------------
 Bundle 'kshenoy/vim-signature'
-noremap <leader>m :SignatureToggle<CR>
+noremap <leader>m :SignatureToggleSigns<CR>
 
 "------------------------------------------------------------------------------
-"Bundle 'Yggdroot/indentLine'
-"Bundle 'bling/vim-bufferline'
+Bundle 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+
+"------------------------------------------------------------------------------
+Bundle 'Yggdroot/indentLine'
+Bundle 'bling/vim-bufferline'
 Bundle 'mhinz/vim-startify'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-fugitive'
+Bundle 'wting/rust.vim'
+Bundle 'fatih/vim-go'
+Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'valloric/YouCompleteMe'
+Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-markdown'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'justinmk/vim-syntax-extra'
-Bundle 'spolu/dwm.vim'
+Bundle 'nielsmadan/harlequin'
+"------------------------------------------------------------------------------
+
+set background=dark
+colorscheme harlequin
+highlight ColorColumn ctermbg=black
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
