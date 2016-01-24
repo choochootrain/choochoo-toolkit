@@ -55,7 +55,7 @@ set copyindent
 set smarttab
 " use spaces for tab
 set expandtab
-" 2 spaces to tab
+" 4 spaces to tab
 set shiftwidth=4
 set softtabstop=4
 
@@ -291,6 +291,8 @@ Bundle 'valloric/YouCompleteMe'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-markdown'
 Bundle 'nielsmadan/harlequin'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'justinmk/vim-syntax-extra'
 "------------------------------------------------------------------------------
 
 set background=dark
