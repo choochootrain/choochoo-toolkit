@@ -27,4 +27,4 @@ xautolock -time 10 -lockaftersleep -locker slimlock &
 redshift &
 
 #start wm
-exec xmonad
+exec i3

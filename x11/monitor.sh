@@ -7,7 +7,8 @@ monitor() {
     xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1
     ;;
   vga)
-    xrandr --output LVDS1 --auto --output VGA1 --auto --left-of LVDS1
+    xrandr --output VGA1 --auto --left-of LVDS1 --primary
+    xrandr --output LVDS1 --auto --noprimary
     ;;
   off)
     xrandr --output VGA1 --off
