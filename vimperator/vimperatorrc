@@ -26,7 +26,7 @@ set incsearch
 " stay in normal mode after loading a page
 set focuscontent
 
-" shoew visual errors
+" show visual errors
 set visualbell
 
 " prefer home row keys for hinting
