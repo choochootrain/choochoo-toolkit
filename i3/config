@@ -3,7 +3,7 @@ floating_modifier $mod
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
