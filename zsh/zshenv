@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin:$PATH"
 export TZ="America/Los_Angeles"
 export HISTFILE=$HOME/.zhistory
 export HISTSIZE=1000
