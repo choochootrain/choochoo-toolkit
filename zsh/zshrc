@@ -200,5 +200,13 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-# initialize autoenv
-[[ -f ~/.autoenv ]] && source ~/.autoenv
+# initialize direnv
+_direnv_hook() {
+    eval "$(direnv export zsh)";
+}
+
+typeset -ag precmd_functions
+
+if [[ -z $precmd_functions[(r)_direnv_hook] ]]; then
+    precmd_functions+=_direnv_hook;
+fi

@@ -4,4 +4,3 @@ ln -sf `pwd`/findup ~/bin/findup
 ln -sf `pwd`/zshrc ~/.zshrc
 ln -sf `pwd`/zaliases ~/.zaliases
 ln -sf `pwd`/zshenv ~/.zshenv
-ln -sf `pwd`/autoenv ~/.autoenv
