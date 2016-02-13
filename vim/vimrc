@@ -60,6 +60,7 @@ set expandtab
 " 4 spaces to tab
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 
 "------------------------------------------------------------------------------
 " keep 5 lines visible below cursor
