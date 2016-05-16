@@ -237,7 +237,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "------------------------------------------------------------------------------
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " use fancy symbols
 let g:airline_powerline_fonts = 0
 let g:airline_theme='powerlineish'
@@ -290,11 +291,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'wting/rust.vim'
 Bundle 'fatih/vim-go'
 Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'valloric/YouCompleteMe'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-markdown'
 Bundle 'nielsmadan/harlequin'
-Bundle 'tsaleh/vim-matchit'
 Bundle 'justinmk/vim-syntax-extra'
 "------------------------------------------------------------------------------
 
