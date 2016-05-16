@@ -67,7 +67,7 @@ function precmd()
     PS1="┌─[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%10c$PR_NO_COLOR]"
     local _git _branch
 
-    _git=`$HOME/bin/./findup .git`
+    _git=`findup .git`
 
     if test -n "$_git"; then
         _branch=`sed -e 's,.*/,,' $_git/HEAD`
@@ -86,7 +86,11 @@ function precmd()
     fi
 
     PS1="$PS1
-└─%(!.#.$) "
+└─"
+    if [ -n "$NIX_ENV" ]; then
+        PS1="$PS1{$NIX_ENV}"
+    fi
+    PS1="$PS1%(!.#.$) "
 }
 
 eval `dircolors ~/.dir_colors` > /dev/null
