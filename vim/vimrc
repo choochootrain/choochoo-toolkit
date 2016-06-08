@@ -284,6 +284,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-markdown'
 Bundle 'nielsmadan/harlequin'
 Bundle 'justinmk/vim-syntax-extra'
+Bundle 'LnL7/vim-nix'
 "------------------------------------------------------------------------------
 
 set background=dark
