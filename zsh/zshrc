@@ -214,3 +214,26 @@ typeset -ag precmd_functions
 if [[ -z $precmd_functions[(r)_direnv_hook] ]]; then
     precmd_functions+=_direnv_hook;
 fi
+
+zmodload zsh/datetime
+function time_to_human {
+	# Converts a floating point time duration in seconds to a human readable string.
+	seconds=$1
+	if (( seconds < 1 )); then
+		printf "%4.1fms" $(( seconds * 1000 ))
+	elif (( seconds < 10 )); then
+		printf "%6.3fs" $seconds
+	elif (( seconds < 60 )); then
+		printf "%6.3fs" $seconds
+	elif (( seconds < (60*60) )); then
+		printf "%6.3fm" $(( seconds / 60 ))
+	elif (( seconds < (60*60*24) )); then
+		printf "%6.3fh" $(( seconds / (60*60) ))
+	elif (( seconds < (60*60*24*30) )); then
+		printf "%6.3fd" $(( seconds / (60*60*24) ))
+	elif (( seconds < (60*60*24*30*12) )); then
+		printf "%6.3fm" $(( seconds / (60*60*24*30) ))
+	else
+		printf "%6.3fy" $(( seconds / (60*60*24*30*12) ))
+	fi
+}
