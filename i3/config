@@ -3,7 +3,7 @@ floating_modifier $mod
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # set wallpaper on start
-exec "feh --bg-stretch ~/.config/bg.jpg"
+exec "~/.fehbg"
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -140,7 +140,6 @@ bar {
     font pango:Ubuntu Mono Bold 10
     status_command i3blocks -c ~/.i3/i3blocks.conf
     position top
-    tray_output none
 }
 bindsym $mod+b border toggle
 
