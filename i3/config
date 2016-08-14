@@ -14,6 +14,8 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -i3 -show run -sidebar-mode"
 
+bindsym $mod+p exec "rofi-pass"
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
