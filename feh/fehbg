@@ -1,4 +1,0 @@
-#!/bin/sh
-WALLPAPERS=~/.config/wallpapers
-IMG=$(ls -ltr $WALLPAPERS/* | shuf -n 1 | tr -s ' ' | cut -d ' ' -f 9)
-feh --no-fehbg --bg-fill $IMG
