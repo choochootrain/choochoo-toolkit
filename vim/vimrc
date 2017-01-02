@@ -274,6 +274,7 @@ Bundle 'mhinz/vim-startify'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'liuchengxu/space-vim-dark'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'wting/rust.vim'
@@ -288,7 +289,7 @@ Bundle 'lambdatoast/elm.vim'
 "------------------------------------------------------------------------------
 
 set background=dark
-colorscheme harlequin
+colorscheme space-vim-dark
 highlight ColorColumn ctermbg=black
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
