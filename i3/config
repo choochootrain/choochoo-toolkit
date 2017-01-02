@@ -24,6 +24,9 @@ bindsym $mod+d exec "rofi -i3 -show run -sidebar-mode"
 
 bindsym $mod+p exec "rofi-pass"
 
+# lock the screen
+bindsym $mod+x exec "i3lock -i $HOME/.config/bg.jpg"
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
