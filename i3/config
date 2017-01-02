@@ -2,8 +2,16 @@ set $mod Mod1
 floating_modifier $mod
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
+gaps outer 0
+gaps inner 5
+smart_gaps on
+smart_borders on
+
+for_window [class="^.*"] border pixel 3
+bindsym $mod+b border toggle
+
 # set wallpaper on start
-exec "~/.fehbg"
+exec "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -29,10 +37,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+c split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+c split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -138,12 +146,36 @@ mode "pass-through" {
 }
 bindsym $mod+Shift+Escape mode "pass-through"
 
+set $black   #000000
+set $gray    #424153
+set $white   #ffffff
+set $accent1 #333399
+set $accent2 #0099cc
+set $accent3 #663399
+
+client.focused          $black  $black $gray $accent1 $accent3
+client.focused_inactive $black  $black $gray $gray    $gray
+client.unfocused        $black  $black $gray $gray    $black
+client.urgent           $black  $black $gray $accent2 $accent2
+client.placeholder      $black  $black $gray $accent2 $accent1
+client.background       $black
+
 bar {
     font pango:Ubuntu Mono Bold 10
     status_command i3blocks -c ~/.i3/i3blocks.conf
     position top
+    i3bar_command i3bar -t
+
+    colors {
+        background $black
+        statusline $white
+
+        focused_workspace  $accent3 $accent3 $white
+        active_workspace   $gray    $gray    $white
+        inactive_workspace $gray    $gray    $white
+        urgent_workspace   $gray    $accent2 $white
+    }
 }
-bindsym $mod+b border toggle
 
 bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 bindsym XF86AudioRaiseVolume exec "amixer sset Master 5%+"
