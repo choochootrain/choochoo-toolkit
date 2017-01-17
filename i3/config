@@ -156,11 +156,11 @@ set $accent1 #333399
 set $accent2 #0099cc
 set $accent3 #663399
 
-client.focused          $black  $black $gray $accent1 $accent3
-client.focused_inactive $black  $black $gray $gray    $gray
-client.unfocused        $black  $black $gray $gray    $black
-client.urgent           $black  $black $gray $accent2 $accent2
-client.placeholder      $black  $black $gray $accent2 $accent1
+client.focused          $black  $accent3 $white $accent1 $accent3
+client.focused_inactive $black  $black   $gray  $gray    $gray
+client.unfocused        $black  $black   $gray  $gray    $black
+client.urgent           $black  $black   $gray  $accent2 $accent2
+client.placeholder      $black  $black   $gray  $accent2 $accent1
 client.background       $black
 
 bar {
