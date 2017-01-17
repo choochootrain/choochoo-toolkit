@@ -3,7 +3,7 @@ floating_modifier $mod
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 gaps outer 0
-gaps inner 5
+gaps inner 10
 smart_gaps on
 smart_borders on
 
