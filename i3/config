@@ -11,7 +11,10 @@ for_window [class="^.*"] border pixel 3
 bindsym $mod+b border toggle
 
 # set wallpaper on start
-exec "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
+exec --no-startup-id "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
+
+# start notification daemon
+exec --no-startup-id "dunst -conf $HOME/.config/dunst/dunstrc"
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
