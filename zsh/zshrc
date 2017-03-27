@@ -64,7 +64,7 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 function precmd()
 {
     # Adjust this to your current preferred prompt
-    PS1="┌─[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_MAGENTA%10c$PR_NO_COLOR]"
+    PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_MAGENTA%10c$PR_NO_COLOR]"
     local _git _branch
 
     _git=`findup .git`
@@ -85,8 +85,6 @@ function precmd()
         PS1="$PS1$PR_WHITE{$name}$PR_NO_COLOR"
     fi
 
-    PS1="$PS1
-└─"
     if [ -n "$NIX_ENV" ]; then
         PS1="$PS1{$NIX_ENV}"
     fi
@@ -96,7 +94,6 @@ function precmd()
 eval `dircolors ~/.dir_colors` > /dev/null
 export TERM=xterm-256color
 
-RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 #LANGUAGE=
 LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
