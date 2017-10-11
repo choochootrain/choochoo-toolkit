@@ -3,24 +3,7 @@ alias ll='ls -al'
 alias ls='ls -h --group-directories-first --color=auto'
 alias vi="vim"
 alias xclip="xclip -sel c"
-alias mplayer="mplayer -msgcolor"
-alias maven="command mvn" # colored maven
-color_maven() {
-  maven $* | sed -e 's/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/[1;32mTests run: \1[0m, Failures: [1;31m\2[0m, Errors: [1;33m\3[0m, Skipped: [1;34m\4[0m/g' \
-    -e 's/\(\[WARN\].*\)/[1;33m\1[0m/g' \
-    -e 's/\(WARN.*\)/[0;33m\1[0m/g' \
-    -e 's/\(\[INFO\].*\)/[1;32m\1[0m/g' \
-    -e 's/\(\[ERROR\].*\)/[1;31m\1[0m/g' \
-    -e 's/\(BUILD FAILURE.*\)/[1;31m\1[0m/g' \
-    -e 's/\(FAILURE!.*\)/[1;31m\1[0m/g' \
-    -e 's/\(BUILD SUCCESS.*\)/[1;37m\1[0m/g' \
-    -e 's/\(SUCCESS.*\)/[1;37m\1[0m/g'
-
-}
-alias mvn=color_maven
 alias psgrep='ps aux | grep'
 alias g='git'
 alias cdg="cd \`findup .git\`; cd .."
-alias gitc="git log | grep Author | sed 's/Author: //' | sort -r | uniq -c | sort -k +1n"
-alias psgrep='ps aux | grep '
 alias src='source ~/.zshrc'

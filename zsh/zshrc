@@ -234,3 +234,18 @@ function time_to_human {
 		printf "%6.3fy" $(( seconds / (60*60*24*30*12) ))
 	fi
 }
+
+# attempt to connect to a running agent - cache SSH_AUTH_SOCK in ~/.ssh/
+function sshagent()
+{
+    [ -S "$SSH_AUTH_SOCK" ] || export SSH_AUTH_SOCK="$(< ~/.ssh/ssh-agent.env)"
+
+    # if cached agent socket is invalid, start a new one
+    [ -S "$SSH_AUTH_SOCK" ] || {
+        eval "$(ssh-agent)"
+        ssh-add -t 25920000 -K ~/.ssh/id_rsa
+        echo "$SSH_AUTH_SOCK" > ~/.ssh/ssh-agent.env
+    }
+}
+
+sshagent
