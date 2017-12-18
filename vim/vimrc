@@ -27,7 +27,7 @@ set wildmenu
 " use mouse for selection
 set mouse=a
 " no redraw while executing macros
-set nolazyredraw
+set lazyredraw
 " show informative title
 set title
 " automatically reload files on external change
