@@ -1,6 +1,5 @@
 set $mod Mod1
 floating_modifier $mod
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 gaps outer 0
 gaps inner 10
@@ -8,13 +7,9 @@ smart_gaps on
 smart_borders on
 
 for_window [class="^.*"] border pixel 3
-bindsym $mod+b border toggle
 
 # set wallpaper on start
-exec --no-startup-id "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
-
-# start notification daemon
-exec --no-startup-id "dunst -conf $HOME/.config/dunst/dunstrc"
+exec --no-startup-id nitrogen --restore
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -22,13 +17,18 @@ bindsym $mod+Return exec xfce4-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# start program launcher
 bindsym $mod+d exec "rofi -i3 -show run -sidebar-mode"
+bindsym $mod+Shift+d exec xfrun4
+for_window [class="Xfrun4" instance="xfrun4"] floating enable
 
-bindsym $mod+p exec "rofi-pass"
+# more xfce bindings
+bindsym Mod4+space exec xfce4-popup-whiskermenu
+bindsym Print exec xfce4-screenshooter -f
+bindsym $mod+Print exec xfce4-screenshooter -w
 
 # lock the screen
-bindsym $mod+x exec "i3lock -c 303030"
+bindsym $mod+x exec xflock4
 
 # change focus
 bindsym $mod+h focus left
@@ -101,7 +101,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 # exit i3
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec xfce4-session-logout
 
 mode "resize/macro" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -159,7 +159,7 @@ set $accent1 #333399
 set $accent2 #0099cc
 set $accent3 #663399
 
-client.focused          $black  $accent3 $white $accent1 $accent3
+client.focused          $black  $accent2 $white $accent1 $accent2
 client.focused_inactive $black  $black   $gray  $gray    $gray
 client.unfocused        $black  $black   $gray  $gray    $black
 client.urgent           $black  $black   $gray  $accent2 $accent2
@@ -171,6 +171,7 @@ bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
     position top
     i3bar_command i3bar -t
+    tray_output none
 
     colors {
         background $black

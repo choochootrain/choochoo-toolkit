@@ -3,7 +3,6 @@
 [user]
 	name = Hurshal Patel
 	email = hurshal@imap.cc
-	signingkey = hurshal@imap.cc
 [credential]
 	helper = cache --timeout=3600
 [branch]
@@ -39,7 +38,5 @@
 	conflictstyle = diff3
 [rerere]
 	enabled = true
-[commit]
-	gpgsign = true
 [gpg]
 	program = gpg2
