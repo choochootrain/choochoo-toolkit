@@ -271,4 +271,5 @@ npm() {
     npm "$@"
 }
 
-export PATH=$PATH:$HOME/.yarn/bin/
+export ANDROID_HOME="$HOME/.android/sdk"
+export PATH=$PATH:$HOME/.yarn/bin/:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
