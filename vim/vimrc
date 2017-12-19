@@ -287,6 +287,7 @@ Bundle 'nielsmadan/harlequin'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'LnL7/vim-nix'
 Bundle 'lambdatoast/elm.vim'
+Bundle 'tomlion/vim-solidity'
 "------------------------------------------------------------------------------
 
 set background=dark
