@@ -243,7 +243,7 @@ function sshagent()
     # if cached agent socket is invalid, start a new one
     [ -S "$SSH_AUTH_SOCK" ] || {
         eval "$(ssh-agent)"
-        ssh-add -t 25920000 -K ~/.ssh/id_rsa
+        ssh-add -t 25920000 ~/.ssh/id_rsa
         echo "$SSH_AUTH_SOCK" > ~/.ssh/ssh-agent.env
     }
 }
