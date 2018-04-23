@@ -24,8 +24,8 @@ set splitbelow
 set splitright
 " make menu useful
 set wildmenu
-" use mouse for selection
-set mouse=a
+" mouses are for plebs
+set mouse=
 " no redraw while executing macros
 set lazyredraw
 " show informative title
@@ -46,10 +46,10 @@ set copyindent
 set smarttab
 " use spaces for tab
 set expandtab
-" 4 spaces to tab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+" 2 spaces to tab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 "------------------------------------------------------------------------------
 " keep 5 lines visible below cursor
