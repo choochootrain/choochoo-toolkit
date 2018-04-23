@@ -1,12 +1,14 @@
 set $mod Mod1
 floating_modifier $mod
 
-gaps outer 0
-gaps inner 10
-smart_gaps on
+#gaps outer 0
+#gaps inner 10
+#smart_gaps on
 smart_borders on
 
 for_window [class="^.*"] border pixel 3
+
+focus_follows_mouse no
 
 # set wallpaper on start
 exec --no-startup-id nitrogen --restore
@@ -28,7 +30,7 @@ bindsym Print exec xfce4-screenshooter -f
 bindsym $mod+Print exec xfce4-screenshooter -w
 
 # lock the screen
-bindsym $mod+x exec xflock4
+bindsym $mod+x exec i3lock -c 303030
 
 # change focus
 bindsym $mod+h focus left
