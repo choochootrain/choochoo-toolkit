@@ -271,5 +271,11 @@ npm() {
     npm "$@"
 }
 
+yarn() {
+    unset -f yarn
+    node --version >/dev/null
+    yarn "$@"
+}
+
 export ANDROID_HOME="$HOME/.android/sdk"
 export PATH=$PATH:$HOME/.yarn/bin/:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/tools/
