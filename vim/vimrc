@@ -36,6 +36,8 @@ set autoread
 set tabpagemax=1000
 " automatic swiffer
 autocmd BufWritePre * :%s/\s\+$//e
+" use F11 to toggle paste mode
+set pastetoggle=
 
 "------------------------------------------------------------------------------
 " continue indentation onto next line
