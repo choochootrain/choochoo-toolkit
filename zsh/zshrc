@@ -6,7 +6,7 @@
 # directory settings
 setopt AUTO_PUSHD # automatically push old directory onto stack
 setopt CHASE_LINKS # resolve symbolic links
-setopt PUSHD_IGNORE_DUPS # don't push duplicates to stack
+setopt PUSHD_IGNORE_DUPS # dont push duplicates to stack
 setopt PUSHD_TO_HOME # pushd with no args is equivalent to pushd $HOME
 
 # completion settings
@@ -36,7 +36,7 @@ setopt HASH_DIRS # hash all directories in path to command
 # job control settings
 setopt MONITOR # enable job control
 setopt NOTIFY # report job status immediately
-unsetopt BG_NICE # don't run background jobs at lower priority
+unsetopt BG_NICE # dont run background jobs at lower priority
 setopt LONG_LIST_JOBS # show jobs list in long format
 setopt AUTO_CONTINUE # disowned jobs are sent a CONT signal
 setopt CHECK_JOBS # check background jobs before exiting
@@ -281,3 +281,4 @@ export PATH=$PATH:$HOME/.bin/:$HOME/.yarn/bin/:$HOME/.pyenv/bin/
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+source /usr/share/autojump/autojump.sh
