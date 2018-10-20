@@ -6,5 +6,4 @@ export PAGER='less'
 export MANPAGER='less'
 export EDITOR='vim'
 export ALTERNATE_EDITOR='vim'
-export PYTHONSTARTUP=/etc/pyrc
 export LESS="-XFR"

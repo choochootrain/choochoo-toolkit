@@ -1,7 +1,6 @@
 alias man='LC_ALL=C LANG=C man'
 alias ll='ls -al'
 alias ls='ls -h --group-directories-first --color=auto'
-alias vi="vim"
 alias xclip="xclip -sel c"
 alias psgrep='ps aux | grep'
 alias g='git'
