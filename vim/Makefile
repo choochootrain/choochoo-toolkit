@@ -1,11 +1,8 @@
 .PHONY: default
 default:
-	mkdir -p ~/.config/nvim/bundle
 	ln -sf $(shell pwd)/vimrc ~/.config/nvim/init.vim
-	ln -snf $(shell pwd)/vundle ~/.config/nvim/bundle/vundle
 
-	mkdir -p ~/.vim/
-	ln -sf ~/.config/nvim/init.vim ~/.vimrc
-	ln -sf ~/.config/nvim/bundle ~/.vim/bundle
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-	vim +PluginInstall +qall
+	vim +PlugUpgrade +PlugInstall +qall

@@ -218,25 +218,18 @@ endif
 
 
 "##############################################################################
-"#    vundle/plugin config                                                    #
+"#    vim-plug config                                                         #
 "##############################################################################
-" add vundle to runtime path
-set runtimepath+=~/.vim/bundle/vundle/
-" setup vundle
-call vundle#rc()
-" let vundle manage vundle
-Bundle 'gmarik/vundle'
+call plug#begin('~/.local/share/nvim/plugged')
 
-"------------------------------------------------------------------------------
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " use fancy symbols
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='kolor'
 
-"------------------------------------------------------------------------------
-Bundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 noremap <leader>gg :GitGutterToggle<CR>
 " off by default
 let g:gitgutter_enabled = 0
@@ -244,51 +237,33 @@ let g:gitgutter_highlight_lines = 1
 " consistent coloring with line number column
 highlight clear SignColumn
 
-"------------------------------------------------------------------------------
-Bundle 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 noremap <leader>u :GundoToggle<CR>
 " show gundo at bottom
 let g:gundo_preview_bottom = 1
 
-"------------------------------------------------------------------------------
-" only use if ag is available
-if executable('ag')
-  Bundle 'rking/ag.vim'
-  let g:ackprg = 'ag --nogroup --column'
-endif
+Plug 'wsdjeg/FlyGrep.vim', { 'on': 'FlyGrep' }
+noremap <Space>s/ :FlyGrep<cr>
 
-"------------------------------------------------------------------------------
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIgnore=['\~$', '__pycache__', '*.pyc$']
 
-"------------------------------------------------------------------------------
-Bundle 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 noremap <leader>m :SignatureToggleSigns<CR>
 
-"------------------------------------------------------------------------------
-Bundle 'mxw/vim-jsx'
+Plug 'sheerun/vim-polyglot'
 let g:jsx_ext_required = 0
 
-"------------------------------------------------------------------------------
-Bundle 'Yggdroot/indentLine'
-Bundle 'bling/vim-bufferline'
-Bundle 'mhinz/vim-startify'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'liuchengxu/space-vim-dark'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-fugitive'
-Bundle 'wting/rust.vim'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'tpope/vim-markdown'
-Bundle 'nielsmadan/harlequin'
-Bundle 'justinmk/vim-syntax-extra'
-Bundle 'LnL7/vim-nix'
-Bundle 'lambdatoast/elm.vim'
-Bundle 'tomlion/vim-solidity'
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-bufferline'
+Plug 'mhinz/vim-startify'
+Plug 'myusuf3/numbers.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
 "------------------------------------------------------------------------------
 
 set background=dark
