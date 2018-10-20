@@ -10,10 +10,7 @@ smart_borders on
 for_window [class="^.*"] border pixel 3
 
 # set wallpaper on start
-exec --no-startup-id "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
-
-# start notification daemon
-exec --no-startup-id "dunst -conf $HOME/.config/dunst/dunstrc"
+exec --no-startup-id nitrogen --restore
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -27,7 +24,10 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec "rofi -i3 -show run -sidebar-mode"
 
-bindsym $mod+p exec "rofi-pass"
+# more xfce bindings
+bindsym Mod4+space exec xfce4-popup-whiskermenu
+bindsym Print exec xfce4-screenshooter -f
+bindsym $mod+Print exec xfce4-screenshooter -w
 
 # lock the screen
 bindsym $mod+x exec i3lock -c 303030
@@ -103,7 +103,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 # exit i3
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec xfce4-session-logout
 
 mode "resize/macro" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -171,6 +171,3 @@ client.background       $black
 bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 bindsym XF86AudioRaiseVolume exec "amixer sset Master 5%+"
 bindsym XF86AudioMute exec "amixer sset Master toggle"
-
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
