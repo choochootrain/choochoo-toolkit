@@ -15,6 +15,9 @@ exec --no-startup-id "feh --bg-fill $HOME/.config/bg.jpg --no-fehbg"
 # start notification daemon
 exec --no-startup-id "dunst -conf $HOME/.config/dunst/dunstrc"
 
+# start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
@@ -164,24 +167,6 @@ client.unfocused        $black  $black   $gray  $gray    $black
 client.urgent           $black  $black   $gray  $accent2 $accent2
 client.placeholder      $black  $black   $gray  $accent2 $accent1
 client.background       $black
-
-bar {
-    font pango:Ubuntu Mono Bold 12
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    position top
-    i3bar_command i3bar
-    tray_output none
-
-    colors {
-        background $black
-        statusline $white
-
-        focused_workspace  $accent3 $accent3 $white
-        active_workspace   $gray    $gray    $white
-        inactive_workspace $gray    $gray    $white
-        urgent_workspace   $gray    $accent2 $white
-    }
-}
 
 bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 bindsym XF86AudioRaiseVolume exec "amixer sset Master 5%+"
