@@ -254,6 +254,7 @@ noremap <leader>m :SignatureToggleSigns<CR>
 
 Plug 'sheerun/vim-polyglot'
 let g:jsx_ext_required = 0
+let g:vim_markdown_conceal = 0
 
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-bufferline'
