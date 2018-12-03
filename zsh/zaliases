@@ -1,9 +1,9 @@
 alias man='LC_ALL=C LANG=C man'
 alias ll='ls -al'
-alias ls='ls -h --group-directories-first --color=auto'
-alias xclip="xclip -sel c"
+alias ls='ls -h'
 alias psgrep='ps aux | grep'
-alias g='git'
+alias git='hub'
+alias g='hub'
 alias cdg="cd \`findup .git\`; cd .."
 alias src='source ~/.zshrc'
 alias gc='g c'
