@@ -1,4 +1,4 @@
-CONFIG_DIRS=dunst git i3 vim xfce4 zsh
+CONFIG_DIRS=git vim zsh
 
 .PHONY: default
 default:
