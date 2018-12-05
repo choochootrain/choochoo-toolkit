@@ -1,4 +1,4 @@
-CONFIG_DIRS=git vim zsh
+CONFIG_DIRS=git vim zsh skhd chunkwm mac-scripts
 
 .PHONY: default
 default:
