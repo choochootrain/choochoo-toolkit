@@ -265,6 +265,8 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'jceb/vim-orgmode'
+Plug 'chrisbra/NrrwRgn'
 
 call plug#end()
 "------------------------------------------------------------------------------
