@@ -134,8 +134,9 @@ command W w !sudo tee % > /dev/null
 "#    Leader keybindings                                                      #
 "##############################################################################
 
-" set leader key
+" set leader keys
 let mapleader=","
+let maplocalleader="\\"
 
 " edit vimrc
 nnoremap <silent> <leader>ev :tabe $MYVIMRC<CR>
