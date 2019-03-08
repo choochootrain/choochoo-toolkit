@@ -191,19 +191,19 @@ nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " clear trailing whitespace
 map <leader>T :%s/\s\+$//<CR>
 
-" open url in default browser
-function! OpenURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
-  echo s:uri
-  if s:uri != ""
-    exec "!xdg-open \"" . s:uri . "\""
-  else
-    echo "No URI found in line."
-  endif
-endfunction
-noremap <leader>o :call OpenURL()<CR>
+if has("nvim")
+  " escape from terminal mode like a sane person
+  tnoremap <Esc> <C-\><C-n>
 
+  " navigate from terminal mode like a sane person
+  tnoremap <C-w>h <C-\><C-n><C-w>h
+  tnoremap <C-w>j <C-\><C-n><C-w>j
+  tnoremap <C-w>k <C-\><C-n><C-w>k
+  tnoremap <C-w>l <C-\><C-n><C-w>l
 
+  " start in terminal mode like a sane person because i'm in a terminal
+  autocmd BufEnter term://* startinsert
+endif
 
 "##############################################################################
 "#    cursor hacks                                                            #
