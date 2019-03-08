@@ -109,19 +109,8 @@ ctrl + alt - j : chunkc tiling::window --use-insertion-point south
 ctrl + alt - k : chunkc tiling::window --use-insertion-point north
 ctrl + alt - l : chunkc tiling::window --use-insertion-point east
 
-# toggle desktop offset
-alt - a : chunkc tiling::desktop --toggle offset
-
-# float / unfloat window and center on screen
-alt - t : chunkc tiling::window --toggle float;\
-          chunkc tiling::window --grid-layout 4:4:1:1:2:2
-
-# toggle sticky
-alt - s : chunkc tiling::window --toggle sticky
-
-# toggle sticky, float and resize to picture-in-picture size
-alt - p : chunkc tiling::window --toggle sticky;\
-          chunkc tiling::window --grid-layout 5:5:4:0:1:1
-
 # float next window to be tiled
 shift + alt - t : chunkc set window_float_next 1
+
+# fuck you macos
+cmd - h : true
