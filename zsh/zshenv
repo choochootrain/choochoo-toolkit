@@ -1,6 +1,6 @@
 export HISTFILE=$HOME/.zhistory
-export HISTSIZE=1000
-export SAVEHIST=1000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export HOSTNAME="`hostname`"
 export PAGER='less'
 export MANPAGER='less'
