@@ -251,27 +251,32 @@ function sshagent()
 sshagent
 
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-    unset -f nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm "$@"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
+
+use_nvm() {
+    unset -f node
+    unset -f npm
+    unset -f yarn
+
+    if [[ -s ".nvmrc" ]]; then
+      nvm use
+    else
+      nvm use default
+    fi
 }
 
 node() {
-    unset -f node
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    use_nvm
     node "$@"
 }
 
 npm() {
-    unset -f npm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    use_nvm
     npm "$@"
 }
 
 yarn() {
-    unset -f yarn
-    node --version >/dev/null
+    use_nvm
     yarn "$@"
 }
 
