@@ -235,6 +235,7 @@ noremap <leader>gg :GitGutterToggle<CR>
 " off by default
 let g:gitgutter_enabled = 0
 let g:gitgutter_highlight_lines = 1
+let g:gitgutter_max_signs = 1000
 " consistent coloring with line number column
 highlight clear SignColumn
 
@@ -267,6 +268,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'jceb/vim-orgmode'
 Plug 'chrisbra/NrrwRgn'
+Plug 'jidn/vim-dbml'
 
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
@@ -279,6 +281,8 @@ let g:ale_fixers = {
 \   'rust': [
 \       'rustfmt',
 \   ],
+\   'typescript': ['tslint'],
+\   'javascript': ['eslint'],
 \}
 
 
