@@ -191,6 +191,17 @@ nnoremap <silent> <leader>co /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " clear trailing whitespace
 map <leader>T :%s/\s\+$//<CR>
 
+" delete and yank into blackhole
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" paste and yank into blackhole
+vnoremap <leader>p "_dP
+
+" persist undos
+set undofile
+set undodir=~/.config/nvim/undo
+
 if has("nvim")
   " escape from terminal mode like a sane person
   tnoremap <Esc> <C-\><C-n>
@@ -258,6 +269,22 @@ Plug 'sheerun/vim-polyglot'
 let g:jsx_ext_required = 0
 let g:vim_markdown_conceal = 0
 
+Plug 'dense-analysis/ale'
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_completion_tsserver_autoimport = 1
+let g:ale_fixers = {
+\   'rust': [
+\       'rustfmt',
+\   ],
+\}
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-bufferline'
 Plug 'mhinz/vim-startify'
@@ -269,22 +296,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'jceb/vim-orgmode'
 Plug 'chrisbra/NrrwRgn'
 Plug 'jidn/vim-dbml'
-
-Plug 'w0rp/ale'
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-let g:ale_fixers = {
-\   'rust': [
-\       'rustfmt',
-\   ],
-\   'typescript': ['tslint'],
-\   'javascript': ['eslint'],
-\}
-
 
 call plug#end()
 "------------------------------------------------------------------------------
