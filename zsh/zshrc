@@ -260,10 +260,12 @@ use_nvm() {
     unset -f npm
     unset -f yarn
 
-    if [[ -s ".nvmrc" ]]; then
-      nvm use
-    else
-      nvm use default
+    if [ -z "$NVM_BIN" ]; then
+      if [[ -s ".nvmrc" ]]; then
+        nvm use
+      else
+        nvm use default
+      fi
     fi
 }
 
@@ -282,9 +284,8 @@ yarn() {
     yarn "$@"
 }
 
-export PATH=$PATH:$HOME/.bin/:$HOME/.yarn/bin/:$HOME/.cargo/bin:/usr/local/opt/mysql-client/bin:/usr/local/Cellar/ripgrep/11.0.1/bin
-
-source /usr/local/share/autojump/autojump.zsh
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$HOME/.bin:$HOME/.yarn/bin:$HOME/.cargo/bin:/usr/local/opt/mysql-client/bin:/usr/local/Cellar/ripgrep/11.0.1/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_SESSION_TTL=12h
@@ -299,3 +300,9 @@ function assume {
   eval $(aws-vault exec $@ -- env | grep -E "^AWS_" | sed -e "s/^/export\ /" )
   aws --output text --query Arn sts get-caller-identity
 }
+
+source /usr/local/share/autojump/autojump.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--layout=reverse --color 16,fg+:15'
+export FZF_DEFAULT_COMMAND='ag -l'
