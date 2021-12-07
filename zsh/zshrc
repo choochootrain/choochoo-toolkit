@@ -301,10 +301,8 @@ function assume {
   aws --output text --query Arn sts get-caller-identity
 }
 
-source /usr/local/share/autojump/autojump.zsh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--layout=reverse --color 16,fg+:15'
 export FZF_DEFAULT_COMMAND='ag -l'
-
-eval $(starship init zsh)
