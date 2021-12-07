@@ -11,3 +11,5 @@ alias gd='g d'
 
 alias vim='nvim'
 alias vi='nvim'
+alias k='kubectl'
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc'

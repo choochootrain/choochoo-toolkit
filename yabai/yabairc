@@ -6,7 +6,8 @@ yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      5.0
+# fuck you catalina
+# yabai -m config window_opacity_duration      5.0
 yabai -m config window_shadow                on
 yabai -m config insert_feedback_color        0xaad75f5f
 yabai -m config active_window_opacity        1.0
@@ -24,6 +25,32 @@ yabai -m config bottom_padding               0
 yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   06
+
+# ubersicht settings
+# Refresh spaces widget on space change
+#yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+## Refresh spaces widget on display focus change
+#yabai -m signal --add event=display_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+## Refresh process widget on space change
+#yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+#
+## Refresh process widget on when focused application changes
+#yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+## Refresh spaces widget on when focused application changes
+#yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+#
+## Refresh process widget on when focused application changes
+#yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+## Refresh spaces widget on when focused application changes
+#yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+#
+## Refresh process widget on when an application window is closed
+#yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+## Refresh spaces widget on when an application window is closed
+#yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+#
+## Refresh process widget when current window title changes
+#yabai -m signal --add event=window_title_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
 
 killall limelight &> /dev/null
 limelight -c $HOME/.limelightrc &> /dev/null

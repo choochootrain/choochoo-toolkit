@@ -1,4 +1,4 @@
-limelight -m config active_color 0x6633FFBB
-limelight -m config normal_color 0x66555555
+limelight -m config active_color 0x6698A8C5
+limelight -m config normal_color 0x6639465E
 limelight -m config width 2
 limelight -m config placement exterior
