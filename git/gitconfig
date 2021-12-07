@@ -2,8 +2,8 @@
 	ui = auto
 [user]
 	name = Hurshal Patel
-	email = hurshal@sappira.com
-	signingkey = hurshal@sappira.com
+	email = hurshal.patel@wheel.com
+	signingkey = 88DAB2143E0B0DF9
 [credential]
 	helper = cache --timeout=3600
 [branch]
