@@ -2,8 +2,8 @@
 	ui = auto
 [user]
 	name = Hurshal Patel
-	email = hurshal@sappira.com
-	signingkey = hurshal@sappira.com
+	email = hpatel@goodrx.com
+	signingkey = hpatel@goodrx.com
 [credential]
 	helper = cache --timeout=3600
 [branch]
