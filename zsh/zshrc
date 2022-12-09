@@ -284,8 +284,7 @@ yarn() {
     yarn "$@"
 }
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$HOME/.bin:$HOME/.yarn/bin:$HOME/.cargo/bin:/usr/local/opt/mysql-client/bin:/usr/local/Cellar/ripgrep/11.0.1/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:/usr/local/sbin:/usr/local/go/bin:$PATH
+export PATH=$PATH:$HOME/.bin:$HOME/.yarn/bin:$HOME/.cargo/bin:/opt/homebrew/opt/mysql-client/bin:/usr/local/sbin:/usr/local/go/bin:$HOME/Library/Python/3.9/bin:$PATH
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 export AWS_SESSION_TTL=12h
