@@ -3,6 +3,7 @@ FINDUP := $(shell command -v findup 2> /dev/null)
 .PHONY: default
 default:
 ifndef FINDUP
+	mkdir -p ~/.bin
 	ln -sf $(shell pwd)/findup ~/.bin/findup
 endif
 	ln -sf $(shell pwd)/dir_colors ~/.dir_colors
