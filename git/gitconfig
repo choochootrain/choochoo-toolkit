@@ -2,8 +2,8 @@
 	ui = auto
 [user]
 	name = Hurshal Patel
-	email = hurshal.patel@wheel.com
-	signingkey = 88DAB2143E0B0DF9
+	email = hurshal@imap.cc
+	signingkey = 2A8685751670FDEF
 [credential]
 	helper = cache --timeout=3600
 [branch]
