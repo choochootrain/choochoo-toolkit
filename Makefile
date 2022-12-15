@@ -13,14 +13,10 @@ brew:
 	direnv \
 	git \
 	gnupg \
-	helm \
 	htop \
 	jq \
 	kind \
 	koekeishiya/formulae/skhd \
 	koekeishiya/formulae/yabai \
-	kubectx \
-	mysql-client \
 	neovim \
-	shopify/shopify/ejson \
 	the_silver_searcher
