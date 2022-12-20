@@ -1,9 +1,1 @@
-export HISTFILE=$HOME/.zhistory
-export HISTSIZE=100000
-export SAVEHIST=100000
-export HOSTNAME="`hostname`"
-export PAGER='less'
-export MANPAGER='less'
-export EDITOR='vim'
-export ALTERNATE_EDITOR='vim'
-export LESS="-XFR"
+[[ -o login ]] && export PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'

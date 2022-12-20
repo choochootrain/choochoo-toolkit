@@ -1,4 +1,4 @@
-CONFIG_DIRS=git vim zsh skhd yabai mac-scripts
+CONFIG_DIRS=git vim zsh skhd yabai mac-scripts nix
 
 .PHONY: default
 default:
@@ -9,18 +9,6 @@ default:
 .PHONY: brew
 brew:
 	brew install \
-	autojump \
-	direnv \
-	git \
-	gnupg \
-	helm \
-	htop \
-	jq \
-	kind \
+	n \
 	koekeishiya/formulae/skhd \
-	koekeishiya/formulae/yabai \
-	kubectx \
-	mysql-client \
-	neovim \
-	shopify/shopify/ejson \
-	the_silver_searcher
+	koekeishiya/formulae/yabai

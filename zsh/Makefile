@@ -7,6 +7,7 @@ ifndef FINDUP
 	ln -sf $(shell pwd)/findup ~/.bin/findup
 endif
 	ln -sf $(shell pwd)/dir_colors ~/.dir_colors
+	ln -sf $(shell pwd)/zshenv ~/.zshenv
+	ln -sf $(shell pwd)/zprofile ~/.zprofile
 	ln -sf $(shell pwd)/zshrc ~/.zshrc
 	ln -sf $(shell pwd)/zaliases ~/.zaliases
-	ln -sf $(shell pwd)/zshenv ~/.zshenv
