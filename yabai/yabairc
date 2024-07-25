@@ -4,7 +4,6 @@
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
 yabai -m config window_opacity               off
 # fuck you catalina
 # yabai -m config window_opacity_duration      5.0
@@ -25,11 +24,5 @@ yabai -m config bottom_padding               0
 yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   3
-
-# border settings
-yabai -m config window_border                on
-yabai -m config window_border_width          3
-yabai -m config active_window_border_color   0xFF98C8D5
-yabai -m config normal_window_border_color   0x6639465E
 
 echo "yabai configuration loaded.."
