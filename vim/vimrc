@@ -277,12 +277,12 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_completion_tsserver_autoimport = 1
-let g:ale_linters = {'rust': ['analyzer']}
-let g:ale_fixers = {
-\   'rust': [
-\       'rustfmt',
-\   ],
-\}
+let g:ale_linters = {'rust': ['analyzer'], 'python': ['mypy', 'ruff', 'ruff_format']}
+let g:ale_fixers = {'rust': ['rustfmt'], 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'typescriptreact': ['prettier', 'eslint']}
+" let g:ale_python_mypy_executable = 'poetry'
+" let g:ale_python_mypy_options = 'run mypy --ignore-missing-imports --scripts-are-modules'
+" let g:ale_python_ruff_executable = 'poetry'
+" let g:ale_python_ruff_options = 'run ruff --fix --exit-non-zero-on-fix'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -298,6 +298,10 @@ Plug 'jceb/vim-orgmode'
 Plug 'chrisbra/NrrwRgn'
 Plug 'jidn/vim-dbml'
 Plug 'github/copilot.vim'
+Plug 'leafgarland/typescript-vim'
+
+Plug 'peitalin/vim-jsx-typescript'
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 call plug#end()
 "------------------------------------------------------------------------------
