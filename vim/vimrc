@@ -284,7 +284,7 @@ let g:ale_fixers = {'rust': ['rustfmt'], 'javascript': ['prettier', 'eslint'], '
 " let g:ale_python_ruff_executable = 'poetry'
 " let g:ale_python_ruff_options = 'run ruff --fix --exit-non-zero-on-fix'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ibhagwan/fzf-lua'
 
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-bufferline'
@@ -292,7 +292,6 @@ Plug 'mhinz/vim-startify'
 Plug 'myusuf3/numbers.vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'ervandew/supertab'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'jceb/vim-orgmode'
 Plug 'chrisbra/NrrwRgn'
