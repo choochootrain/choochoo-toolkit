@@ -19,4 +19,5 @@ brew:
 	koekeishiya/formulae/skhd \
 	koekeishiya/formulae/yabai \
 	neovim \
-	the_silver_searcher
+	ripgrep \
+	pinentry-mac
