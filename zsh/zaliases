@@ -11,6 +11,7 @@ alias gd='g d'
 
 alias vim='nvim'
 alias vi='nvim'
-alias k='kubectl'
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc'
-alias docker='podman'
+
+alias m='mise'
+alias bs='~/braintrust/services/bt_services.py'
+alias p='pnpm'

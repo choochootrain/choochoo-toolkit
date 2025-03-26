@@ -91,9 +91,6 @@ function precmd()
         PS1="$PS1$PR_WHITE{$name}$PR_NO_COLOR"
     fi
 
-    if [ -n "$NIX_ENV" ]; then
-        PS1="$PS1{$NIX_ENV}"
-    fi
     PS1="$PS1%(!.#.$) "
 }
 
@@ -112,7 +109,6 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 autoload -U compinit
 compinit
-setopt completealiases
 
 bindkey "^?" backward-delete-char
 bindkey '^[OH' beginning-of-line
@@ -273,3 +269,20 @@ eval "$(/Users/choochootrain/.local/bin/mise activate zsh)"
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
     builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
 fi
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/choochootrain/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/choochootrain/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
