@@ -11,7 +11,8 @@ alias gd='g d'
 
 alias vim='nvim'
 alias vi='nvim'
+alias v='nvim'
 
 alias m='mise'
-alias bs='~/braintrust/services/bt_services.py'
 alias p='pnpm'
+alias z='zellij'

@@ -70,14 +70,18 @@ function precmd()
     _git=`findup .git`
 
     if test -n "$_git"; then
-        if test -e "$_git/HEAD"; then
+        _submodule=""
+        if test -f "$_git/HEAD"; then
             _branch=`sed -e 's,.*/,,' $_git/HEAD`
-            PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR"
         else
-            _git=`cd .. && findup .git`
-            _branch=`sed -e 's,.*/,,' $_git/HEAD`
-            PS1="$PS1$PR_WHITE($_branch)[submodule]$PR_NO_COLOR"
+            _branch=` git -C "$(git rev-parse --show-toplevel)/.." rev-parse --abbrev-ref HEAD`
+            _subbranch=`git rev-parse --abbrev-ref HEAD`
+            if [[ "$_branch" != "$_subbranch" ]]; then
+                _submodule="$PR_YELLOW""[$_subbranch]"
+            fi
         fi
+
+        PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR$_submodule$PR_NO_COLOR"
     fi
 
     if [ -n "$VIRTUAL_ENV" ]; then
@@ -265,6 +269,7 @@ export INFOPATH="${INFOPATH:-}:/opt/homebrew/share/info";
 
 export PATH="$PATH:/Users/choochootrain/.local/bin"
 eval "$(/Users/choochootrain/.local/bin/mise activate zsh)"
+source <(fzf --zsh)
 
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
     builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
