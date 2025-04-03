@@ -6,18 +6,6 @@ default:
 		$(MAKE) -C $$dir; \
 	done
 
-.PHONY: brew
-brew:
-	brew install \
-	autojump \
-	direnv \
-	git \
-	gnupg \
-	htop \
-	jq \
-	kind \
-	koekeishiya/formulae/skhd \
-	koekeishiya/formulae/yabai \
-	neovim \
-	ripgrep \
-	pinentry-mac
+.PHONY: deps
+deps:
+	make -C mac-scripts brew
