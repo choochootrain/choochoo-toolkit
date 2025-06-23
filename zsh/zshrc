@@ -268,7 +268,7 @@ export INFOPATH="${INFOPATH:-}:/opt/homebrew/share/info";
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 export PATH="$PATH:/Users/choochootrain/.local/bin"
-eval "$(/Users/choochootrain/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 source <(fzf --zsh)
 
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then

@@ -1,4 +1,3 @@
-aoki/redis-cli/redis-cli
 autojump
 bat
 direnv
@@ -12,8 +11,7 @@ jq
 kind
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
-libpq
-minio/stable/mc
+mise
 neovim
 pinentry-mac
 pstree
