@@ -10,3 +10,4 @@ export LESS="-XFR"
 
 # Created by `pipx` on 2023-12-07 00:49:18
 export PATH="$PATH:/Users/choochootrain/.local/bin"
+eval "$(mise activate zsh --shims)"
