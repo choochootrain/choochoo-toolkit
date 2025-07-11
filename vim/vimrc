@@ -216,75 +216,66 @@ if has("nvim")
   autocmd BufEnter term://* startinsert
 endif
 
-"##############################################################################
-"#    cursor hacks                                                            #
-"##############################################################################
-"" use orange cursor in insert mode and gray cursor otherwise
-if &term =~ "xterm\\|rxvt"
-  let &t_SI = "\<Esc>]12;orange\x7"
-  let &t_EI = "\<Esc>]12;gray\x7"
-
-  " reset cursor when vim exits
-  autocmd VimLeave * silent !echo -ne "\033]112\007"
-endif
-
 
 "##############################################################################
 "#    vim-plug config                                                         #
 "##############################################################################
-call plug#begin('~/.local/share/nvim/plugged')
+if !exists('g:vscode')
+  call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" use fancy symbols
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled=1
-let g:airline_theme='kolor'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " use fancy symbols
+  let g:airline_powerline_fonts = 0
+  let g:airline#extensions#tabline#enabled=1
+  let g:airline_theme='kolor'
 
-Plug 'airblade/vim-gitgutter'
-noremap <leader>gg :GitGutterToggle<CR>
-" off by default
-let g:gitgutter_enabled = 0
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_max_signs = 1000
-" consistent coloring with line number column
-highlight clear SignColumn
+  Plug 'airblade/vim-gitgutter'
+  noremap <leader>gg :GitGutterToggle<CR>
+  " off by default
+  let g:gitgutter_enabled = 0
+  let g:gitgutter_highlight_lines = 1
+  let g:gitgutter_max_signs = 1000
+  " consistent coloring with line number column
+  highlight clear SignColumn
 
-Plug 'sjl/gundo.vim'
-noremap <leader>u :GundoToggle<CR>
-" show gundo at bottom
-let g:gundo_preview_bottom = 1
+  Plug 'sjl/gundo.vim'
+  noremap <leader>u :GundoToggle<CR>
+  " show gundo at bottom
+  let g:gundo_preview_bottom = 1
 
-Plug 'wsdjeg/FlyGrep.vim', { 'on': 'FlyGrep' }
-noremap <Space>s/ :FlyGrep<cr>
+  Plug 'wsdjeg/FlyGrep.vim', { 'on': 'FlyGrep' }
+  noremap <Space>s/ :FlyGrep<cr>
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeIgnore=['\~$', '__pycache__', '*.pyc$']
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  map <C-n> :NERDTreeToggle<CR>
+  let g:NERDTreeIgnore=['\~$', '__pycache__', '*.pyc$']
 
-Plug 'kshenoy/vim-signature'
-noremap <leader>m :SignatureToggleSigns<CR>
+  Plug 'kshenoy/vim-signature'
+  noremap <leader>m :SignatureToggleSigns<CR>
 
-Plug 'sheerun/vim-polyglot'
-let g:jsx_ext_required = 0
-let g:vim_markdown_conceal = 0
+  Plug 'sheerun/vim-polyglot'
+  let g:jsx_ext_required = 0
+  let g:vim_markdown_conceal = 0
 
-Plug 'dense-analysis/ale'
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+  Plug 'dense-analysis/ale'
+  let g:ale_fix_on_save = 1
+  let g:ale_lint_on_text_changed = 'never'
+  let g:airline#extensions#ale#enabled = 1
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-let g:ale_completion_tsserver_autoimport = 1
-let g:ale_linters = {'rust': ['analyzer'], 'python': ['mypy', 'ruff', 'ruff_format']}
-let g:ale_fixers = {'rust': ['rustfmt'], 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'typescriptreact': ['prettier', 'eslint']}
-" let g:ale_python_mypy_executable = 'poetry'
-" let g:ale_python_mypy_options = 'run mypy --ignore-missing-imports --scripts-are-modules'
-" let g:ale_python_ruff_executable = 'poetry'
-" let g:ale_python_ruff_options = 'run ruff --fix --exit-non-zero-on-fix'
+  let g:ale_completion_tsserver_autoimport = 1
+  let g:ale_linters = {'rust': ['analyzer'], 'python': ['mypy', 'ruff', 'ruff_format']}
+  let g:ale_fixers = {'rust': ['rustfmt'], 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'typescriptreact': ['prettier', 'eslint']}
+  " let g:ale_python_mypy_executable = 'poetry'
+  " let g:ale_python_mypy_options = 'run mypy --ignore-missing-imports --scripts-are-modules'
+  " let g:ale_python_ruff_executable = 'poetry'
+  " let g:ale_python_ruff_options = 'run ruff --fix --exit-non-zero-on-fix'
 
-Plug 'ibhagwan/fzf-lua'
+  Plug 'ibhagwan/fzf-lua'
+  map <C-p> :FzfLua files<CR>
+  map <C-f> :FzfLua live_grep_native<CR>
 
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-bufferline'
@@ -297,11 +288,39 @@ Plug 'jceb/vim-orgmode'
 Plug 'chrisbra/NrrwRgn'
 Plug 'jidn/vim-dbml'
 Plug 'leafgarland/typescript-vim'
+  "Plug 'nvim-treesitter/nvim-treesitter', { 'do': { ->
+  "  lua << EOF
+  "    require('nvim-treesitter.configs').setup({
+  "      ensure_installed = { 'javascript', 'typescript', 'python', 'rust' },
+  "      sync_install = false,
+  "      auto_install = true,
+  "      highlight = {
+  "        enable = true,
+  "      },
+  "    })
+  "  EOF
+  "}}
 
-Plug 'peitalin/vim-jsx-typescript'
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'bling/vim-bufferline'
+  Plug 'mhinz/vim-startify'
+  Plug 'myusuf3/numbers.vim'
+  Plug 'liuchengxu/space-vim-dark'
+  Plug 'ervandew/supertab'
+  Plug 'tpope/vim-sleuth'
+  Plug 'jceb/vim-orgmode'
+  Plug 'chrisbra/NrrwRgn'
+  Plug 'leafgarland/typescript-vim'
 
-call plug#end()
+  Plug 'peitalin/vim-jsx-typescript'
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+  Plug 'tpope/vim-dadbod'
+  Plug 'kristijanhusak/vim-dadbod-ui'
+  Plug 'kristijanhusak/vim-dadbod-completion' "Optional
+
+  call plug#end()
+endif
 "------------------------------------------------------------------------------
 
 set background=dark
