@@ -9,6 +9,7 @@ alias gc='g c'
 alias gs='g s'
 alias gd='g d'
 alias gmm='g fetch origin main && g merge origin/main'
+alias gsu='g submodule update'
 
 alias vim='nvim'
 alias vi='nvim'
@@ -32,3 +33,6 @@ alias rw='bs restart webapp'
 
 alias rat='bs restart api-ts && bs tail api-ts'
 alias rwt='bs restart webapp && bs tail webapp'
+
+alias claude="~/.claude/local/claude"
+alias cc='claude'
