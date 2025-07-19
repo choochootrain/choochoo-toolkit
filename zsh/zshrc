@@ -65,23 +65,26 @@ function precmd()
 {
     # Adjust this to your current preferred prompt
     PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_MAGENTA%10c$PR_NO_COLOR]"
-    local _git _branch
+    local _branch _gitdir
 
-    _git=`findup .git`
+    _branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
-    if test -n "$_git"; then
-        _submodule=""
-        if test -f "$_git/HEAD"; then
-            _branch=`sed -e 's,.*/,,' $_git/HEAD`
+    if [ -n "$_branch" ]; then
+        _gitdir=$(git rev-parse --git-dir 2>/dev/null)
+
+        if [[ "$_gitdir" == *"/modules/"* ]]; then
+            # submodule
+            local _parent_path=$(echo "$_gitdir" | sed 's/\.git\/modules\/.*//')
+            local _parent_branch=$(git -C "$_parent_path" rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+            PS1="$PS1$PR_WHITE($_parent_branch)$PR_NO_COLOR$PR_YELLOW""[$_branch]$PR_NO_COLOR"
+        elif [[ "$_gitdir" == *"/worktrees/"* ]]; then
+            # worktree
+            # TODO: submodules need to be initialized for submodule in worktree detection to work
+            PS1="$PS1$PR_CYAN($_branch)$PR_NO_COLOR"
         else
-            _branch=` git -C "$(git rev-parse --show-toplevel)/.." rev-parse --abbrev-ref HEAD`
-            _subbranch=`git rev-parse --abbrev-ref HEAD`
-            if [[ "$_branch" != "$_subbranch" ]]; then
-                _submodule="$PR_YELLOW""[$_subbranch]"
-            fi
+            PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR"
         fi
-
-        PS1="$PS1$PR_WHITE($_branch)$PR_NO_COLOR$_submodule$PR_NO_COLOR"
     fi
 
     if [ -n "$VIRTUAL_ENV" ]; then
