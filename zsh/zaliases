@@ -34,5 +34,4 @@ alias rw='bs restart webapp'
 alias rat='bs restart api-ts && bs tail api-ts'
 alias rwt='bs restart webapp && bs tail webapp'
 
-alias claude="~/.claude/local/claude"
 alias cc='claude'
