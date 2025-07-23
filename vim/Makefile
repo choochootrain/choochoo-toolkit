@@ -2,6 +2,7 @@
 default:
 	mkdir -p ~/.config/nvim
 	ln -sf $(shell pwd)/init.lua ~/.config/nvim/init.lua
+	ln -sf $(shell pwd)/lazy-lock.json ~/.config/nvim/lazy-lock.json
 
 .PHONY: old
 old:
