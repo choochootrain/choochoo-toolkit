@@ -1,4 +1,4 @@
-CONFIG_DIRS=git vim zsh skhd yabai mac-scripts
+CONFIG_DIRS=git vim zsh skhd yabai mac-scripts misc
 
 .PHONY: default
 default:
