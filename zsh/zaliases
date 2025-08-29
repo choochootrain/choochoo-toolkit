@@ -9,24 +9,30 @@ alias gc='g c'
 alias gs='g s'
 alias gd='g d'
 alias gmm='g fetch origin main && g merge origin/main'
+alias gcm='g c -m merge'
 alias gsu='g submodule update'
 
 alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
-alias ovim='NVIM_APPNAME=nvim-old nvim'
-alias ovi='NVIM_APPNAME=nvim-old nvim'
-alias ov='NVIM_APPNAME=nvim-old nvim'
+
+alias vs='nvim --listen ~/.cache/nvim/server.pipe'
+alias v='nvim --server ~/.cache/nvim/server.pip --mirror-ui'
+
+alias ov='ovim'
+alias lv='lvim'
 
 alias m='mise'
 alias c='cargo'
 alias p='pnpm'
 
-alias claude="~/.claude/local/claude"
-alias mc='multiclaude'
-alias cc='claude'
 alias z='zellij'
 alias rl='rg --line-buffered'
 alias watch='watchexec'
 
 alias yr='yabai --stop-service && yabai --start-service'
+
+alias claude="~/.claude/local/claude"
+alias mc='multiclaude'
+alias cc='claude'
+
+alias todo='vim ~/org/todo.org'
+alias t='todo'
