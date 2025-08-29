@@ -1,7 +1,9 @@
 .PHONY: default
 default:
 	mkdir -p ~/.config/nvim
+	mkdir -p ~/.config/nvim/lua
 	ln -sf $(shell pwd)/init.lua ~/.config/nvim/init.lua
+	ln -sf $(shell pwd)/plugins ~/.config/nvim/lua/plugins
 	ln -sf $(shell pwd)/lazy-lock.json ~/.config/nvim/lazy-lock.json
 
 .PHONY: old
