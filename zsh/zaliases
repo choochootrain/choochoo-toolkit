@@ -30,11 +30,13 @@ alias watch='watchexec'
 
 alias yr='yabai --stop-service && yabai --start-service'
 
-alias ra='bs restart api-ts'
-alias rw='bs restart webapp'
+alias ar='bs restart api-ts'
+alias br='bs restart brainstore'
+alias wr='bs restart webapp'
 
-alias rat='bs restart api-ts && bs tail api-ts'
-alias rwt='bs restart webapp && bs tail webapp'
+alias art='bs restart api-ts && bs tail api-ts'
+alias brt='bs restart brainstore && bs tail brainstore'
+alias wrt='bs restart webapp && bs tail webapp'
 
 alias cc='claude'
 alias mc='multiclaude'
