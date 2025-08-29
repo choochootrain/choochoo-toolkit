@@ -1,8 +1,11 @@
 autojump
 bat
+blueutil
 cmake
+cowsay
 direnv
 fd
+fortune
 fzf
 gh
 giflib
@@ -31,4 +34,5 @@ pkgconf
 pstree
 ripgrep
 sk
+sleepwatcher
 zellij
