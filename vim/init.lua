@@ -30,6 +30,8 @@ vim.opt.number = true
 vim.opt.modelines = 0
 -- no delay when escaping
 vim.opt.ttimeoutlen = 0
+-- small delay for mapped sequences
+vim.opt.timeoutlen = 250
 -- show status line
 vim.opt.laststatus = 2
 -- modern encoding default
@@ -108,10 +110,6 @@ vim.fn.matchadd('ErrorMsg', '^\\(<\\||\\|=\\|>\\)\\{7\\}\\([^=].\\+\\)\\?$')
 ------------------------------------------------------------------------------
 -- add line at 80 characters
 vim.opt.colorcolumn = '80'
--- show current line
-vim.opt.cursorline = true
--- show current column
-vim.opt.cursorcolumn = true
 
 ------------------------------------------------------------------------------
 -- enable code folding
