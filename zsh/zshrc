@@ -335,6 +335,7 @@ compinit
 # End of Docker CLI completions
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/multiclaude/completions/multiclaude" && source "${HOME}/multiclaude/completions/multiclaude"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 

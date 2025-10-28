@@ -10,4 +10,4 @@ while ! test -e "$arg"; do
  fi
 done
 
-echo $PWD/$arg
+echo $PWD
