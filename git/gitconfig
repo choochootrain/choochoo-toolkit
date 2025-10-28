@@ -10,12 +10,15 @@
 	autosetuprebase = always
 [alias]
 	a  = add
-	bl = blame
+	b = branch
 	br = branch
+	bl = blame
+	checkoutautocomplete = checkout
 	ch = checkout
 	cl = clone
 	c  = commit
 	d  = diff
+	dc = diff --cached
 	dt = difftool
 	g  = grep
 	l  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -27,8 +30,11 @@
 	sh = show
 	s  = status
 	st = stash
+	w  = worktree
+	wl = worktree list
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	excludesfile = ~/.gitignore_global
 [diff]
@@ -37,6 +43,7 @@
 	prompt = false
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
 [rerere]
 	enabled = true
 [commit]
@@ -45,3 +52,14 @@
 	gpgsign = true
 [gpg]
 	program = gpg
+[submodule]
+	#recurse = true
+	fetchJobs = 10
+[init]
+	defaultBranch = main
+[safe]
+	directory = *
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[pull]
+	ff = only
