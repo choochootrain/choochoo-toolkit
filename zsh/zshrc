@@ -335,6 +335,7 @@ compinit
 # End of Docker CLI completions
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/multiclaude/completions/multiclaude" && source "${HOME}/multiclaude/completions/multiclaude"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
@@ -348,3 +349,8 @@ esac
 
 if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/.local/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "${HOME}/.local/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/.local/google-cloud-sdk/completion.zsh.inc"; fi
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# next.js uses this stupid file routing shit like app/[org]/page.tsx
+# which is super annoying so disable glob patterns
+setopt nonomatch
