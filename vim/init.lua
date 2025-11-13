@@ -1,5 +1,6 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
+vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -106,10 +107,6 @@ vim.opt.listchars = 'eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_'
 vim.opt.backspace = 'indent,eol,start'
 -- highlight conflict markers
 vim.fn.matchadd('ErrorMsg', '^\\(<\\||\\|=\\|>\\)\\{7\\}\\([^=].\\+\\)\\?$')
-
-------------------------------------------------------------------------------
--- add line at 80 characters
-vim.opt.colorcolumn = '80'
 
 ------------------------------------------------------------------------------
 -- enable code folding
@@ -235,7 +232,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 ------------------------------------------------------------------------------
 
 vim.opt.background = 'dark'
-vim.cmd('colorscheme space-vim-dark')
+vim.cmd('colorscheme tokyonight-night')
 vim.cmd('highlight ColorColumn ctermbg=black')
 vim.cmd('highlight Normal ctermbg=none')
 vim.cmd('highlight NonText ctermbg=none')

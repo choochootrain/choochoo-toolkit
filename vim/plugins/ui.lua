@@ -1,8 +1,19 @@
 return {
-  'liuchengxu/space-vim-dark',
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {}
+  },
+  {
+    'liuchengxu/space-vim-dark',
+    lazy = false,
+    priority = 1000,
+  },
   'myusuf3/numbers.vim',
   'RRethy/vim-illuminate',
   'ibhagwan/fzf-lua',
+  'unblevable/quick-scope',
 --  {
 --    'nvim-telescope/telescope.nvim', tag = '0.1.8',
 --    dependencies = {
@@ -56,7 +67,7 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
-      options  = { theme = 'ayu_dark' },
+      options  = { theme = 'tokyonight' },
       sections = {
         lualine_c = { 'filename', 'filetype', 'diagnostics' },
         lualine_x = {
