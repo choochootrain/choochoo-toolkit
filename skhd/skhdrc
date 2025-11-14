@@ -58,11 +58,7 @@ alt + shift - 9 : yabai -m window --space 9
 alt + shift - 0 : yabai -m window --space 10
 
 # reload .yabairc
-alt + shift - r : launchctl kickstart -k "gui${UID}/homebrew.mxcl.yabai"
+alt + shift - r : yabai --restart-service
 
 # shut up macos
 cmd - h : true
-
-.blacklist [
-  "vmware fusion"
-]
