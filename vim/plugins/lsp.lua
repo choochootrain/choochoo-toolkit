@@ -63,8 +63,6 @@ return {
       return ret
     end,
     config = function(_, opts)
-      -- XXX setup keymaps
-
       if vim.fn.has("nvim-0.10") == 1 then
         -- inlay hints
         if opts.inlay_hints.enabled then
@@ -162,7 +160,6 @@ return {
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {},
@@ -198,9 +195,6 @@ return {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     cmd = { "LspLinesToggle" },
     event = "VeryLazy",
-    keys = {
-      { "<leader>ud", "<cmd>LspLinesToggle<cr>", desc = "Toggle LSP Lines" },
-    },
     config = function()
       require("lsp_lines").setup()
       vim.api.nvim_create_user_command("LspLinesToggle", function()
@@ -243,10 +237,9 @@ return {
     end
   },
 
-  -- XXX better diagnostics list and others
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
+    cmd = "Trouble",
     opts = {
       use_diagnostic_signs = true,
       auto_jump = { "lsp_definitions", "lsp_references", "lsp_type_definitions", "lsp_implementations" },
@@ -254,20 +247,6 @@ return {
         jump = { "<S-CR>" },
         jump_close = { "<CR>" },
       },
-    },
-    keys = {
-      { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
-      { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
-      { "<leader>xj", vim.diagnostic.goto_next, desc = "Next diagnostic" },
-      { "<leader>xk", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
-      { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Trouble: Show" },
-      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Show QuickFix" },
-      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: Show Locationlist" },
-      { "<leader>xt", "<cmd>TroubleToggle telescope<cr>", desc = "Trouble: Show Telescope" },
-      { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Show Diagnostics" },
-      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Show Workspace Diagnostics" },
-      --{ "<leader>xD", require("util").toggle_diagnostics, desc = "Toggle Diagnostics" },
-      --{ "<leader>ux", require("util").toggle_diagnostics, desc = "Toggle Diagnostics" },
     },
   },
 }
