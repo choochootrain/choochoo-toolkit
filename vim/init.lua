@@ -150,39 +150,8 @@ vim.api.nvim_create_user_command('W', 'w !sudo tee % > /dev/null', {})
 
 
 --##############################################################################
---#    Leader keybindings                                                      #
+--#    Non-leader keybindings                                                  #
 --##############################################################################
-
-
--- edit vimrc
-vim.keymap.set('n', '<leader>ev', ':tabe $MYVIMRC<CR>', { silent = true })
--- reload vimrc
-vim.keymap.set('n', '<leader>sv', ':so $MYVIMRC<CR>', { silent = true })
-
--- toggle whitespace visible
-vim.keymap.set('n', '<leader>i', ':set list! <CR>')
-
--- fix indents
-vim.keymap.set('n', '<leader>in', "gg=G''")
-
--- copy selected text
-vim.keymap.set('n', '<leader>c', ':w !xsel -i -b<CR>')
-
--- next tab
-vim.keymap.set('n', '<leader>w', 'gt<CR>')
--- previous tab
-vim.keymap.set('n', '<leader>q', 'gT<CR>')
-
--- next buffer
-vim.keymap.set('n', '<leader>W', ':bn<CR>')
--- previous buffer
-vim.keymap.set('n', '<leader>Q', ':bp<CR>')
-
--- toggle fold open/close
-vim.keymap.set('n', '<leader>z', 'za')
-
--- toggle fold column show/hide
-vim.keymap.set('n', '<leader>fc', ':lua FoldColumnToggle()<CR>')
 
 -- scroll faster
 vim.keymap.set('n', '<C-e>', '5<C-e>')
@@ -190,25 +159,16 @@ vim.keymap.set('n', '<C-y>', '5<C-y>')
 
 -- make : commands easier to type
 vim.keymap.set('n', ';', ':')
--- keep semicolon accessible for idk what
-vim.keymap.set('n', '<leader>;', ';')
 
 -- jump to matching bracket
 vim.keymap.set('n', '<Tab>', '%')
 vim.keymap.set('v', '<Tab>', '%')
 
--- jump to next conflict marker
-vim.keymap.set('n', '<leader>co', '/^\\(<\\\\|=\\\\|>\\)\\{7\\}\\([^=].\\+\\)\\?$<CR>', { silent = true })
-
--- clear trailing whitespace
-vim.keymap.set('', '<leader>T', ':%s/\\s\\+$//<CR>')
-
--- delete and yank into blackhole
-vim.keymap.set('n', '<leader>d', '"_d')
-vim.keymap.set('v', '<leader>d', '"_d')
-
--- paste and yank into blackhole
-vim.keymap.set('v', '<leader>p', '"_dP')
+-- navigate splits with Ctrl+hjkl
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- persist undos
 vim.opt.undofile = true
@@ -238,20 +198,8 @@ vim.cmd('highlight Normal ctermbg=none')
 vim.cmd('highlight NonText ctermbg=none')
 
 ------------------------------------------------------------------------------
-
-vim.keymap.set('n', '<leader>f',       ':FzfLua files<CR>')
-
-vim.keymap.set('n', '<leader>g',       ':FzfLua grep_cword<CR>')
-vim.keymap.set('n', '<leader>gl',      ':FzfLua live_grep_native<CR>')
-vim.keymap.set('n', '<leader>gb',      ':BlameToggle window<CR>')
-vim.keymap.set('n', '<leader>gg',      ':GitGutterToggle<CR>')
-
-vim.keymap.set('n', '<leader>s',       ':FzfLua lsp_document_symbols<CR>')
-vim.keymap.set('n', '<leader>sw',      ':FzfLua lsp_live_workspace_symbols<CR>')
-vim.keymap.set('n', '<leader>sf',      ':FzfLua lsp_finder<CR>')
-vim.keymap.set('n', '<leader>d',       ':FzfLua diagnostics_document<CR>')
-
-vim.keymap.set('n', '<leader>t',       ':FloatermToggle<CR>')
+-- Direct LSP keybindings (non-leader for quick access)
+------------------------------------------------------------------------------
 
 local map = function(lhs, rhs, desc)
   vim.keymap.set('n', lhs, rhs,
@@ -265,20 +213,19 @@ map('gd', vim.lsp.buf.definition,        'Go to definition')
 map('gi', vim.lsp.buf.implementation,    'Go to implementation')
 map('gr', vim.lsp.buf.references,        'List references')
 map('gD', vim.lsp.buf.declaration,       'Go to declaration')
-map('<leader>D', vim.lsp.buf.type_definition, 'Go to type definition')
 
 ----------------------------------------------------------------
--- Hover, signature help, code actions
+-- Hover
 ----------------------------------------------------------------
 map('K',  vim.lsp.buf.hover,             'Hover documentation')
-map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
-map('<leader>.', vim.lsp.buf.code_action, 'Code action')
-map('<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
 
 ----------------------------------------------------------------
 -- Diagnostics
 ----------------------------------------------------------------
---map('[d',  vim.diagnostic.goto_prev,     'Prev diagnostic')
---map(']d',  vim.diagnostic.goto_next,     'Next diagnostic')
-map('<leader>dl', vim.diagnostic.open_float,'Line diagnostics')
-map('<leader>dq', vim.diagnostic.setloclist,'Quickfix diagnostics')
+map('[d',  vim.diagnostic.goto_prev,     'Prev diagnostic')
+map(']d',  vim.diagnostic.goto_next,     'Next diagnostic')
+
+-- Configure diagnostics with severity sorting
+vim.diagnostic.config({
+  severity_sort = true,
+})

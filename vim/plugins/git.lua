@@ -1,13 +1,8 @@
 return {
   {
-    'airblade/vim-gitgutter',
+    'lewis6991/gitsigns.nvim',
     config = function()
-      -- off by default
-      vim.g.gitgutter_enabled = 0
-      vim.g.gitgutter_highlight_lines = 1
-      vim.g.gitgutter_max_signs = 1000
-      -- consistent coloring with line number column
-      vim.cmd('highlight clear SignColumn')
+      require('gitsigns').setup()
     end
   },
   {
@@ -30,14 +25,8 @@ return {
       "LazyGitFilter",
       "LazyGitFilterCurrentFile",
     },
-    -- optional for floating window border decoration
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
   }
 }

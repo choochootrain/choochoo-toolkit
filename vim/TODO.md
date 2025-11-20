@@ -1,0 +1,8 @@
+- [ ] **Comment.nvim** - Quick commenting with `gcc` for line, `gc` in visual for block
+- [ ] **File explorer** - Neo-tree or oil.nvim for file browsing
+- [ ] **conform.nvim** - Better formatter management
+- [ ] **nvim-autopairs** - Auto bracket/quote pairing
+- [ ] **fidget.nvim** - Clean LSP progress notifications
+- [ ] **spectre.nvim** - Project-wide search and replace with preview
+- [ ] **undotree** - Undo history visualization
+- [ ] **nvim-bqf** - Better quickfix window

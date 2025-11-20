@@ -12,32 +12,23 @@ return {
   },
   'myusuf3/numbers.vim',
   'RRethy/vim-illuminate',
-  'ibhagwan/fzf-lua',
+  {
+    'ibhagwan/fzf-lua',
+    config = function()
+      require('fzf-lua').setup({
+        lsp = {
+          code_actions = {
+            winopts = {
+              height = 0.2,   -- smaller for code actions (30% of screen)
+              width = 0.5,
+            },
+          },
+        },
+      })
+      require('fzf-lua').register_ui_select()
+    end
+  },
   'unblevable/quick-scope',
---  {
---    'nvim-telescope/telescope.nvim', tag = '0.1.8',
---    dependencies = {
---      'nvim-lua/plenary.nvim',
---      {
---        'nvim-telescope/telescope-fzf-native.nvim',
---        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
---      },
---    },
---    config = function()
---      local telescope = require('telescope')
---      telescope.setup({
---        defaults = {
---          layout_config = { prompt_position = 'top' },
---          sorting_strategy = 'ascending',
---          winblend = 10,
---          pickers = {
---            find_files = { hidden = true },
---          },
---        }
---      })
---      telescope.load_extension('fzf')
---    end
---  },
   {
     'kshenoy/vim-signature',
     config = function()
