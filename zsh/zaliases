@@ -11,6 +11,7 @@ alias gd='g d'
 alias gmm='g fetch origin main:main && g merge origin/main'
 alias gcm='g c -m merge'
 alias gsu='g submodule update'
+alias gg='lazygit'
 
 alias vim='nvim'
 alias vi='nvim'
@@ -45,3 +46,4 @@ alias todo='vim ~/org/todo.org'
 alias t='todo'
 
 alias htop='btop'
+alias mg='mv' # i dont want microemacs
