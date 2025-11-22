@@ -14,5 +14,8 @@ alias vi='nvim'
 alias v='nvim'
 
 alias m='mise'
+alias c='cargo'
 alias p='pnpm'
-alias z='zellij'
+
+alias mc='multiclaude'
+alias cc='claude'

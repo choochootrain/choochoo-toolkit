@@ -8,3 +8,4 @@ export EDITOR='vim'
 export ALTERNATE_EDITOR='vim'
 export LESS="-XFR"
 [[ -o login ]] && export PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+. "$HOME/.cargo/env"
