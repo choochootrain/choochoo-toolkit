@@ -67,10 +67,13 @@ return {
         { "<leader>bp", "<cmd>bp<cr>", desc = "Previous buffer", mode = "n" },
         { "<leader>bd", "<cmd>bd<cr>", desc = "Delete buffer", mode = "n" },
 
-        -- Windows/Tabs group
-        { "<leader>w", group = "Windows/Tabs" },
-        { "<leader>wn", "<cmd>tabnext<cr>", desc = "Next tab", mode = "n" },
-        { "<leader>wp", "<cmd>tabprevious<cr>", desc = "Previous tab", mode = "n" },
+        -- Tabs group + shortcuts
+        { "<leader>w", "<cmd>tabnext<cr>", desc = "Next tab", mode = "n" }, -- shortcut
+        { "<leader>q", "<cmd>tabprevious<cr>", desc = "Previous tab", mode = "n" }, -- shortcut
+        { "<leader>e", group = "Windows/Tabs" },
+        { "<leader>e", "<cmd>FzfLua tabs<cr>" },
+        { "<leader>en", "<cmd>tabnext<cr>", desc = "Next tab", mode = "n" },
+        { "<leader>ep", "<cmd>tabprevious<cr>", desc = "Previous tab", mode = "n" },
 
         -- Terminal group
         { "<leader>t", "<cmd>FloatermToggle<cr>", desc = "Toggle terminal", mode = "n" },
