@@ -12,6 +12,8 @@ ensure-brew:
 .PHONY: brew
 brew: ensure-brew
 	./brew-leaves.sh
+	# casks cant be listed with the full path because idk
+	brew install --cask nikitabobko/tap/aerospace
 
 .PHONY: update-brew
 update-brew:

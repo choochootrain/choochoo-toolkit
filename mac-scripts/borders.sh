@@ -2,7 +2,7 @@
 
 ACTIVE_COLOR="0xcc00cccc"
 INACTIVE_COLOR="0x00000000"
-WIDTH="7"
+WIDTH="8"
 
 if [ -n "$1" ]; then
     case $1 in
