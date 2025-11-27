@@ -13,6 +13,7 @@ brew: ensure-brew
 	./brew-leaves.sh
 	# casks cant be listed with the full path because idk
 	brew install --cask nikitabobko/tap/aerospace
+	brew install --cask font-hack-nerd-font
 
 .PHONY: update-brew
 update-brew:

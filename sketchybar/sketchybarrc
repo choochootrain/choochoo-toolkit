@@ -1,17 +1,17 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000
+sketchybar --bar position=top height=32 blur_radius=30 color=0x00000000 padding_left=3 padding_right=3
 
 default=(
-  padding_left=0
-  padding_right=0
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Regular:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  padding_left=1
+  padding_right=1
+  icon.font="Hack Nerd Font:Bold:12.0"
+  label.font="Hack Nerd Font:Bold:12.0"
+  icon.color=0xccffffff
+  label.color=0xccffffff
   icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
+  icon.padding_right=2
+  label.padding_left=2
   label.padding_right=4
 )
 sketchybar --default "${default[@]}"
@@ -24,25 +24,30 @@ for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        width=25 \
+        width=20 \
         background.color=0xcc00cccc \
         background.corner_radius=3 \
-        background.height=25 \
+        background.height=20 \
         background.drawing=off \
         label="$sid" \
         label.align=center \
+        icon.padding_left=0 \
+        icon.padding_right=0 \
         label.padding_left=0 \
         label.padding_right=0 \
+        align=center \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item volume right \
+           --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
-           --add item battery right \
+           --subscribe volume volume_change
+
+sketchybar --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
 
