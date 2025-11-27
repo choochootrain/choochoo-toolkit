@@ -26,8 +26,6 @@ alias z='zellij'
 alias rl='rg --line-buffered'
 alias watch='watchexec'
 
-alias yr='yabai --stop-service && yabai --start-service'
-
 alias claude="~/.claude/local/claude"
 alias cc='claude'
 alias mc='multiclaude'
