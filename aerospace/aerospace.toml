@@ -2,7 +2,9 @@ start-at-login = true
 
 after-startup-command = 'exec-and-forget ~/.config/mac-scripts/borders.sh'
 
-exec-on-workspace-change = 'exec-and-forget sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+exec-on-workspace-change = [
+    '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+]
 
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
@@ -108,7 +110,13 @@ automatically-unhide-macos-hidden-apps = true
     esc = ['exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
 
 [mode.service.binding]
-    esc = ['reload-config',           'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    esc = [
+        'reload-config',
+        'exec-and-forget brew services restart sketchybar',
+        'exec-and-forget ~/.config/mac-scripts/borders.sh',
+        'mode main'
+    ]
+
     q = ['enable toggle']
     r = ['flatten-workspace-tree',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # reset layout
     f = ['layout floating tiling',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # Toggle between floating and tiling layout
