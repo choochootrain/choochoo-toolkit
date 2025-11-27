@@ -26,4 +26,4 @@ if [ -n "$1" ]; then
     esac
 fi
 
-$(borders "active_color=${ACTIVE_COLOR}" "inactive_color=${INACTIVE_COLOR}" "width=${WIDTH}")
+$(borders "active_color=${ACTIVE_COLOR}" "inactive_color=${INACTIVE_COLOR}" "width=${WIDTH}" "hidpi=on")
