@@ -28,7 +28,14 @@ alias zbd='z d braintrust'
 alias rl='rg --line-buffered'
 alias watch='watchexec'
 
-alias yr='yabai --stop-service && yabai --start-service'
+alias cc='claude'
+alias mc='multiclaude'
+
+alias todo='vim ~/org/todo.org'
+alias t='todo'
+
+alias htop='btop'
+alias mg='mv' # i dont want microemacs
 
 alias bt='bs tail'
 alias ar='bs restart api-ts'
@@ -38,12 +45,3 @@ alias wr='bs restart webapp'
 alias art='bs restart api-ts && bs tail api-ts'
 alias brt='bs restart brainstore && bs tail brainstore'
 alias wrt='bs restart webapp && bs tail webapp'
-
-alias cc='claude'
-alias mc='multiclaude'
-
-alias todo='vim ~/org/todo.org'
-alias t='todo'
-
-alias htop='btop'
-alias mg='mv' # i dont want microemacs
