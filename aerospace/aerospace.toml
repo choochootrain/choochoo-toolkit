@@ -44,6 +44,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-s = 'layout v_accordion' # 'layout stacking' in i3
     alt-w = 'layout h_accordion' # 'layout tabbed' in i3
     alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+    alt-d = 'balance-sizes'
 
     alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
@@ -57,27 +58,42 @@ automatically-unhide-macos-hidden-apps = true
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
     alt-0 = 'workspace 0'
+    alt-p = 'workspace P'
 
-    alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-    alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-    alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-    alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
-    alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
-    alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-    alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-    alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
-    alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
-    alt-shift-0 = 'move-node-to-workspace 0 --focus-follows-window'
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 0'
+    alt-shift-p = 'move-node-to-workspace P'
 
     alt-o = ['exec-and-forget ~/.config/mac-scripts/borders.sh monitor', 'mode monitor']
-    alt-r = ['exec-and-forget ~/.config/mac-scripts/borders.sh resize', 'mode resize']
+    alt-r = ['exec-and-forget ~/.config/mac-scripts/borders.sh resize',  'mode resize']
     alt-q = ['exec-and-forget ~/.config/mac-scripts/borders.sh service', 'mode service']
 
+    # disable macos hide shit
+    cmd-h = []
+    cmd-alt-h = []
+
+[workspace-to-monitor-force-assignment]
+    P = 'built-in'
+
 [mode.monitor.binding]
-    h = ['focus-monitor left', 'mode main']
-    j = ['focus-monitor down', 'mode main']
-    k = ['focus-monitor up', 'mode main']
-    l = ['focus-monitor right', 'mode main']
+    h = ['focus-monitor left',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    j = ['focus-monitor down',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    k = ['focus-monitor up',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    l = ['focus-monitor right', 'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+
+    shift-h = ['move-workspace-to-monitor left',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    shift-j = ['move-workspace-to-monitor down',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    shift-k = ['move-workspace-to-monitor up',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    shift-l = ['move-workspace-to-monitor right', 'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+
     esc = ['exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
 
 [mode.resize.binding]
@@ -88,10 +104,10 @@ automatically-unhide-macos-hidden-apps = true
     esc = ['exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
 
 [mode.service.binding]
-    esc = ['reload-config', 'exec-and-forget ~/.config/mac-scripts/borders.sh default', 'mode main']
-    r = ['flatten-workspace-tree', 'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # reset layout
-    f = ['layout floating tiling', 'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # Toggle between floating and tiling layout
-    backspace = ['close-all-windows-but-current', 'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # reset layout
+    esc = ['reload-config',           'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
+    q = ['enable toggle']
+    r = ['flatten-workspace-tree',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # reset layout
+    f = ['layout floating tiling',    'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main'] # Toggle between floating and tiling layout
 
     alt-shift-h = ['join-with left',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
     alt-shift-j = ['join-with down',  'exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
