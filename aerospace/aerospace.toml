@@ -103,10 +103,15 @@ automatically-unhide-macos-hidden-apps = true
     esc = ['exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
 
 [mode.resize.binding]
-    h = 'resize width -50'
+    h = 'resize width  -50'
     j = 'resize height +50'
     k = 'resize height -50'
-    l = 'resize width +50'
+    l = 'resize width  +50'
+
+    shift-h = 'resize width  -100'
+    shift-j = 'resize height +100'
+    shift-k = 'resize height -100'
+    shift-l = 'resize width  +100'
     esc = ['exec-and-forget ~/.config/mac-scripts/borders.sh', 'mode main']
 
 [mode.service.binding]
