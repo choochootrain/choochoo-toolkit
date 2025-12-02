@@ -65,8 +65,6 @@ function precmd()
 {
     # Adjust this to your current preferred prompt
     PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_MAGENTA%10c$PR_NO_COLOR]"
-    # Right-aligned prompt showing current time
-    RPS1="[$PR_CYAN%t$PR_NO_COLOR]"
     local _branch _gitdir
 
     _branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -117,7 +115,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS1="${${KEYMAP/vicmd/$PR_YELLOW NORMAL $PR_NO_COLOR}/(main|viins)/$PR_WHITE INSERT $PR_NO_COLOR}[$PR_CYAN%t$PR_NO_COLOR]"
     RPS2=$RPS1
     zle reset-prompt
 }
