@@ -85,6 +85,7 @@ automatically-unhide-macos-hidden-apps = true
     # disable macos hide shit
     cmd-h = []
     cmd-alt-h = []
+    cmd-m = []
 
 [workspace-to-monitor-force-assignment]
     P = 'built-in'
