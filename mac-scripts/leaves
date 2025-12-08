@@ -14,6 +14,7 @@ fortune
 fzf
 gh
 git
+git-delta
 gnupg
 graphviz
 helix
@@ -37,4 +38,5 @@ pkgconf
 pstree
 ripgrep
 sk
+withgraphite/tap/graphite
 zellij
