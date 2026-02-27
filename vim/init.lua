@@ -201,29 +201,28 @@ vim.cmd('highlight NonText ctermbg=none')
 -- Direct LSP keybindings (non-leader for quick access)
 ------------------------------------------------------------------------------
 
-local map = function(lhs, rhs, desc)
-  vim.keymap.set('n', lhs, rhs,
-    { noremap = true, silent = true, buffer = bufnr, desc = desc })
-end
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspQuickMaps', { clear = true }),
+  callback = function(ev)
+    local map = function(lhs, rhs, desc)
+      vim.keymap.set('n', lhs, rhs, {
+        noremap = true,
+        silent = true,
+        buffer = ev.buf,
+        desc = desc,
+      })
+    end
 
-----------------------------------------------------------------
--- Jump / navigation
-----------------------------------------------------------------
-map('gd', vim.lsp.buf.definition,        'Go to definition')
-map('gi', vim.lsp.buf.implementation,    'Go to implementation')
-map('gr', vim.lsp.buf.references,        'List references')
-map('gD', vim.lsp.buf.declaration,       'Go to declaration')
+    map('gd', vim.lsp.buf.definition, 'Go to definition')
+    map('gi', vim.lsp.buf.implementation, 'Go to implementation')
+    map('gr', vim.lsp.buf.references, 'List references')
+    map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+    map('K', vim.lsp.buf.hover, 'Hover documentation')
+  end,
+})
 
-----------------------------------------------------------------
--- Hover
-----------------------------------------------------------------
-map('K',  vim.lsp.buf.hover,             'Hover documentation')
-
-----------------------------------------------------------------
--- Diagnostics
-----------------------------------------------------------------
-map('[d',  vim.diagnostic.goto_prev,     'Prev diagnostic')
-map(']d',  vim.diagnostic.goto_next,     'Next diagnostic')
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 
 -- Configure diagnostics with severity sorting
 vim.diagnostic.config({
